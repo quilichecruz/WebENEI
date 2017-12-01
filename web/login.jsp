@@ -23,7 +23,7 @@
                 <div class="col s12 m6 offset-m3">
                     <div class="card">
                         <div class="card-action center">
-                            <img class="imglogin" alt="" src="media/logo.png" style="max-width: 50%;">
+                            <img class="imglogin" alt="" src="media/logo.png">
                         </div>
                         <div class="card-content">
                             <form>
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="card-content center">
-                                    <button type="submit" class="btn waves-effect waves-light blue">Ingresar</button>
+                                    <a class="btn waves-effect waves-light blue" onclick="Materialize.toast('Bienvenido', 1000)">Ingresar</a>
                                 </div>
                             </form>
                         </div>
