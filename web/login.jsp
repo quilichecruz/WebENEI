@@ -26,23 +26,23 @@
                             <img class="imglogin" alt="" src="media/logo.png">
                         </div>
                         <div class="card-content">
-                            <form>
+                            <form name="form_login" action="session_admin" method="post" autocomplete="off" id="login" onsubmit="validate()">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix black-text">account_circle</i>
-                                        <input id="username" type="text" class="validate">
-                                        <label for="username" class="active">Username</label>
+                                        <input id="user_admin" name="user_admin" type="text" class="validate" required="">
+                                        <label for="user_admin" class="active">Username</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix black-text">vpn_key</i>
-                                        <input id="password" type="password" class="validate">
-                                        <label for="password" class="active">Password</label>
+                                        <input id="pass_admin" name="pass_admin" type="password" class="validate" required="">
+                                        <label for="pass_admin" class="active">Password</label>
                                     </div>
                                 </div>
                                 <div class="card-content center">
-                                    <a class="btn waves-effect waves-light blue" onclick="Materialize.toast('Bienvenido', 1000)">Ingresar</a>
+                                    <button class="btn waves-effect waves-light blue">Ingresar</button>
                                 </div>
                             </form>
                         </div>

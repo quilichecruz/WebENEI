@@ -1,0 +1,10 @@
+/* cambiar tipo de letra */
+div.navfont {
+    color: #CC1414;
+}
+ 
+/* cambiar el color de fondo a la barra */
+nav.navbar {
+    background-color: #CC1414;
+}
+
