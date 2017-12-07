@@ -83,7 +83,7 @@ public class session_admin extends HttpServlet {
            session.setAttribute("pass_admin",pass_admin);  
            session.setAttribute("hostname",hostname);
            session.setAttribute("ip",ip); 
-           response.sendRedirect("principal.jsp");
+           response.sendRedirect("home.jsp");
         }
         else{  
             response.sendRedirect("login.jsp");
