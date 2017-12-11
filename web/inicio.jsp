@@ -190,15 +190,15 @@ try {
 <div class="modal-wrapper" id="popup2">
         <div class="popup-contenedor2"> 
             <div class="row" id="light2" style="display: block;">
-                <div class="col s12 m12 l12">
+                <div class="col-m12">
                     <div class="table-responsive">
-                        <table class="highlight tableh">    
+                        <table class="table table-hover" style="font-size: 12px;">    
                             <thead>
                                 <tr>
-                                    <th class="center">DNI</th>
-                                    <th class="center">Apellidos y Nombres</th>
-                                    <th class="center">Profesión</th>
-                                    <th class="center">Grado</th>
+                                    <th style="text-align: center;">DNI</th>
+                                    <th style="text-align: center;">Apellidos y Nombres</th>
+                                    <th style="text-align: center;">Profesión</th>
+                                    <th style="text-align: center;">Grado</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -221,19 +221,19 @@ try {
 %>
                             <tbody>
                                 <tr>
-                                    <td class="center"><%=rs.getString(1)%></td>
-                                    <td class="center"><%=rs.getString(3)%> <%=rs.getString(2)%></td>
-                                    <td class="center"><%=rs.getString(9)%></td>
-                                    <td class="center"><%=rs.getString(8)%></td>
-                                    <td class="center">
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(1)%></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%> <%=rs.getString(2)%></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(9)%></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(8)%></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;">
                                         <a href="#"><i class="material-icons">colorize</i></a>
                                         <a href="#"><i class="material-icons">highlight_off</i></a>
                                     </td>
                                 </tr>
                                 <tr class="">
-                                    <td class="" title="Cursos de referencia"><i class="material-icons">import_contacts</i>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" class="" title="Cursos de referencia"><i class="material-icons">import_contacts</i>
                                     </td>
-                                    <td colspan="4" class="" title="Cursos de referencia">
+                                    <td colspan="4" class="" title="Cursos de referencia" style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;">
                                         <ul style="list-style-type: none; padding: 0px 0px;color: #0069B4">
                                            <li><%=rs.getString(16)%></li>
                                            <li><%=rs.getString(17)%></li>
@@ -251,20 +251,20 @@ try {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="" title="Especialidad"><i class="material-icons">school</i></td>
-                                    <td colspan="4" class="" title="Especialidad"><%=rs.getString(12)%></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" class="" title="Especialidad"><i class="material-icons">school</i></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" colspan="4" class="" title="Especialidad"><%=rs.getString(12)%></td>
                                 </tr>
                                 <tr class="">
-                                    <td class="" title="Experiencia"><i class="material-icons">school</i></td>
-                                    <td colspan="4" class="" title="Experiencia"><%=rs.getString(14)%></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" class="" title="Experiencia"><i class="material-icons">school</i></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" colspan="4" class="" title="Experiencia"><%=rs.getString(14)%></td>
                                 </tr>
                                 <tr class="">
-                                    <td class=""><i class="material-icons">phone</i></td>
-                                    <td colspan="4" class=""><%=rs.getString(4)%> - <%=rs.getString(6)%></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" class=""><i class="material-icons">phone</i></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" colspan="4" class=""><%=rs.getString(4)%> - <%=rs.getString(6)%></td>
                                 </tr>
                                 <tr class="">
-                                    <td class=""><i class="material-icons">location_on</i></td>
-                                    <td colspan="4" class=""><%=rs.getString(5)%>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" class=""><i class="material-icons">location_on</i></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"colspan="4" class=""><%=rs.getString(5)%>
                                 </tr>
                             </tbody>
 <% 
