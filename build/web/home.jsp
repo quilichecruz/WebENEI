@@ -42,7 +42,7 @@
             </nav>	
 	</div>
         <div id="test1" class="col s12 m12 l12">
-            
+            <!--
             <div class="col s2 m2 l2 paddingh">
                 <div class="card-panel ">
                     <a href="#">
@@ -108,9 +108,57 @@
                     </li>
                 </ul>
             </div>
-            <div class="col s10 m10 l10">
+            -->
+            
+            <div class="col s3 m3 l3" style="margin-top: 3%;">
+                <label>Buscar docente</label>
+                <form action="buscarpro_adm" method="post">
+                    <select class="browser-default">
+                        <option value="" disabled selected>Escoge tu opción</option>
+                        
+<%
+    Connection cnx=null;
+    Statement sta=null;
+    ResultSet rs=null;
+
+    try {   
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("select dni_pro,nombre_pro,apellidos_pro,sede_pro from profesores order by apellidos_pro");
+    while (rs.next()){
+%>
+
+                        <option value="<%=rs.getString(1)%>"><%=rs.getString(3)%>, <%=rs.getString(2)%></option>
+
+<%
+    }
+sta.close();
+rs.close();
+cnx.close();
+}catch (Exception e) {
+}
+%> 
+                    
+                    </select>
+                    <button>Buscar</button>
+                </form>
+            </div>
+
+                
+                
+                
+                
+                
+                
+                
+
+            
+            
+            
+            <div class="col s12 m12 l12" style="margin-top: 5%">
                 <div class="table-responsive size">
-                    <table class="highlight tableh">
+                    <table class="highlight tableh responsive-table">
                         <thead>
                             <tr>
                                 <th></th>
@@ -122,9 +170,6 @@
                             </tr>
                         </thead>
 <%
-    Connection cnx=null;
-    Statement sta=null;
-    ResultSet rs=null;
     try {
     Class.forName("com.mysql.jdbc.Driver");
     cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
@@ -159,6 +204,63 @@
             </div>
             <div class="col">
             </div>
+                <div class="col s12 m12 l12">
+                    <div class="table-responsive">
+                        <table class="highlight tableh">
+                            <thead>
+                                <tr>
+                                    <th>Curso</th>
+                                    <th>Inscritos</th>
+                                    <th>Vacantes</th>
+                                    <th>Disponibles</th>
+                                    <th>Frecuencia</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Término</th>
+                                    <th>Estado</th>
+                                    <th>Lab</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+<%
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+        sta=cnx.createStatement();
+        rs=sta.executeQuery("SELECT T1.id_registro,T1.cod_cur,T3.nombre_cur,T1.paga,T1.dni_pro,T2.nombre_pro,T2.apellidos_pro,T1.fechatini,T1.fechatfin,T1.esta,T1.labo,T3.vaca_cur,-sum(paga-vaca_cur),T1.frec FROM registro T1 INNER JOIN profesores T2 INNER JOIN cursos T3  ON T1.dni_pro = T2.dni_pro AND T1.cod_cur = T3.cod_cur where T1.dni_pro="+dnipro+" group by T1.id_registro");
+        while (rs.next()){
+%>
+                            <tbody>            
+                                <tr>  
+                                    <th class=""><%=rs.getString(3)%></th>
+                                    <th class=""><%=rs.getInt(4)%></th>
+                                    <th class=""><%=rs.getInt(12)%></th>
+                                    <th class=""><%=rs.getInt(13)%></th>
+                                    <th class=""><%=rs.getString(14)%></th>
+                                    <th class=""><%=rs.getString(8)%></th>
+                                    <th class=""><%=rs.getString(9)%></th>
+                                    <th class=""><%=rs.getString(10)%></th>
+                                    <th class=""><%=rs.getString(11)%></th>
+                                    <th class="">
+                                        <a href="editarrela.jsp?id=<%=rs.getString(1)%>">
+                                        <img src="Iconos/editar.png" width="15" height="15"></a>   
+                                        <a href="sesion.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
+                                        <img src="Iconos/l2.png" width="15" height="15"></a>
+                                        <a href="eliminarrela.jsp?id=<%=rs.getString(1)%>" onclick="return eliminar()">
+                                        <img src="Iconos/eliminar1.png" width="15" height="15"></a>
+                                    </th>
+                                </tr>
+                            </tbody>
+<% 
+    }
+sta.close();
+rs.close();
+cnx.close();
+} catch (Exception e) {
+    }
+%>
+                        </table>
+                    </div>
+                </div>
         </div>
         
         
@@ -174,9 +276,8 @@
         </div>           
     </div>
     
-                    
-                    
-                    
+
+
                     
                     
                     
