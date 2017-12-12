@@ -43,6 +43,77 @@ c11 varchar(100) NULL,
 c12 varchar(100) NULL,
 PRIMARY KEY  (dni_pro));
 
+create table cursos(
+cod_cur int(10) auto_increment NOT NULL,
+nombre_cur varchar(200) NOT NULL,
+vaca_cur int(10) NOT NULL,
+cost float(10) NULL,
+desc_cur varchar(400) NULL,
+PRIMARY KEY  (cod_cur));
+
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Administración de Proyectos con MS Project',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Elaboración de Balanced Scorecard en EXCEL',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Macros en Excel para el Análisis de la Información Estadística ',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Planeamiento y Ejecución de Encuestas',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Técnicas de Muestreo y sus Aplicaciones',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Microstrategy Business Intelligence',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Análisis de Datos con SPSS',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Métodos Estadisticos',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Estadística Descriptiva e Inferencial',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Desarrollo Web con Python/Django- Desarrollo web con PYTHON/DJANGO',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. de Administración y Gestión de Servidores Linux-Administración Básica de Linux',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('STATA Intermedio',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Análisis de Datos con I SPSS',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Análisis de Datos con R – Nivel Básico',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Análisis de datos con uso de software estadístico para la toma de decisiones del alto mando Policial',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Análisis de Datos II con SPSS',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Análisis de Indicadores y elaboración de reportes socioeconómicos',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Análisis Económico Financiero',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('ARCGIS Básico',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Construcción e Inter. de Indicadores Económicos y Sociales',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Curso Taller Documentación Virtual de Investigaciones Estadísticas ',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Curso taller internacional "Hacia un Sistema Estadístico Integrado basado en Registros Administrativos"',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Curso Taller Sistemas de Información Geográfica con ARCGIS',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Curso Taller Software R',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Diseño y manejo de Base de datos Ofimáticas con Excel y Access',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Estadística Aplicada - Análisis Multivariado',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Estadística Aplicada - Diseño Experimentales',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Estadística Aplicada - Muestreo I',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Estadística Aplicada  - Seminario',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Estadíst. Aplicada - Regresión Lineal y Mét. No Paramétri.',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en en Estadística Aplicada - Métodos Estadísticos',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Excel - Análisis de Datos y Macros en Excel',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Excel - Excel Aplicado a las Finanzas',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Excel - Funciones y gráficos en Excel',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Excel - Procesos e indicadores de Gestión en Excel',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Muestreo - Muestras Complejas y Análisis con SPSS',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Muestreo - Muestreo II',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Esp. en Muestreo - Planeamiento y Ejecución de Encuestas',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Estadistica Descriptiva con Excel',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Estadística Descriptiva e Inferencial',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Excel Básico',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Excel Intermedio',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Herramientas ofimáticas Avanzadas',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Herramientas ofimáticas Básica',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Herramientas Ofimáticas Intermedias',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Herramientas Ofimáticas para la Gestión Administrativa',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Indicadores demográficos y proyecciones de población',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Indicadores Económicos y Cuentas Nacionales',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('LINUX',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Macros en Excel para el Análisis de la Información Estadística',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Planeamiento Estratégico',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Planeamiento y Ejecución de Encuestas',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('SPSS Avanzado',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('SPSS Básico',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('SPSS Intermedio',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('STATA Básico',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Técnica de Muestreo y sus Aplicaciones',50,350,'');
+INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Uso y Explotación de Base de Datos con SQL',50,350,'');
+
+
+
+
+
 INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dire_pro`,`corr_pro`,`cpre_pro`,`grad_pro`,`prof_pro`,`tipo_pro`,`cpos_pro`,`espe_pro`,`dipl_pro`,`expe_pro`,`sede_pro`) VALUES ('02445284','Alex','Mamami Cordova','992971172 / 991685925','Jr J. P. Fernandini 1015 –Breña','Alex.Mamani@inei.gob.pe','null','Bachiller','Computación e Informática','','','ESPECIALISTA ESTADISTICO II','Análisis de Datos I con SPSS - Loreto / STATA Básico','Profesional Económico Social IV – Encuesta Nacional de Hogares – Análisis y estimación de Indicadores económicos sociales de la Encuesta Nacional de hogares para el cálculo de la pobreza. De  Mayo 2014 a la fecha','Lima');
 INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dire_pro`,`corr_pro`,`cpre_pro`,`grad_pro`,`prof_pro`,`tipo_pro`,`cpos_pro`,`espe_pro`,`dipl_pro`,`expe_pro`,`sede_pro`) VALUES ('06002748','Walter Jaime','Abanto Sanchez','4245462 / 994603469','Jr. Ica N° 844 Dpto. 112 Lima','walter.abanto@inei.gob.pe','null','Titulado','Estadística e Informática','','','','INEI - Uso y aplicación del sistema de información geográfica STATA /SPSS /Microsoft / access y visual FoxPro / Microsoft windows','Ministerio de Produccion / Essalud /SEPTIS DE VIDA / Instituto Nacional de Estadistica e Informatica','Lima');
 INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dire_pro`,`corr_pro`,`cpre_pro`,`grad_pro`,`prof_pro`,`tipo_pro`,`cpos_pro`,`espe_pro`,`dipl_pro`,`expe_pro`,`sede_pro`) VALUES ('06182224','Yoni Jose','Ornay Snachez','5646175/993967528','Urb. Palomino 5ta Zona S-4-22- Cercado de Lima','taurus_1011@hotmail.com','null','Egresado','Computación e Informática','','','','Ensamblaje y reparacion de PCs , Instalacion de Redes y Cabinas de nternet- SENATI / operación S /36 , Implementacion S /36, Utilitarios SDA,SEU, DFU , SORT','IDAT Programa de especializacion en el area de Diseño Grafico y Diseño Web / IST Metropolitano  coordinador PNI -instructor / Escuela Superior de Administracion de empresas - Jefe Administrador de Red','Lima');
@@ -94,3 +165,15 @@ INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dir
 INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dire_pro`,`corr_pro`,`cpre_pro`,`grad_pro`,`prof_pro`,`tipo_pro`,`cpos_pro`,`espe_pro`,`dipl_pro`,`expe_pro`,`sede_pro`) VALUES ('SIN DNI7','Jose Luis','Huertas Chumbes','5215160/976157268','Urb. Los alizos MzA.B-29 .San Martin de Porres Lima-Peru','jhuertas@inei.gob.pe','null','Titulado','Economía','Maestría','','Financiamiento de Empresas','Curso de Estadistica para cuentas Nacionales Trimestrales ,FMI, CEPAL, BRAZILIA -BRAZIL-2010 / Seminario Plan Contable General -Ministerio de Economia y Finanzas','INEI: Director nacional de Cuentas Nacionales y metodologia - Direccion de Bienes y Servicios (1996-2015)','Lima');
 INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dire_pro`,`corr_pro`,`cpre_pro`,`grad_pro`,`prof_pro`,`tipo_pro`,`cpos_pro`,`espe_pro`,`dipl_pro`,`expe_pro`,`sede_pro`) VALUES ('SIN DNI8','Oscar','Kuroiwa Quispe','','','Oscar.Kuroiwa@inei.gob.pe','','','','','','','','','Lima');
 INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dire_pro`,`corr_pro`,`cpre_pro`,`grad_pro`,`prof_pro`,`tipo_pro`,`cpos_pro`,`espe_pro`,`dipl_pro`,`expe_pro`,`sede_pro`) VALUES ('SIN DNI9','Cesar','Lara Ponce','994603513','','cesar.lara@inei.gob.pe','','','','','','','','','Lima');
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,8 +18,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inicio</title>
+        <script type="text/javascript"  src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script type="text/javascript"  src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+        
         <link rel="stylesheet" href="assets/css/custom/inicio-admin.css">
         <link rel="stylesheet" href="assets/css/custom/admin-popup.css">
+        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 
@@ -37,39 +42,13 @@
             <!--Menu-->
             <div class="row">
                     <div class="col-md-3">
-                        <form action="" method="post">
-                            <select name="dnipro" style="font-size: 12px;width: 70%">
-                                <option>Lista de docentes</option>
-<%
-    Connection cnx=null;
-    Statement sta=null;
-    ResultSet rs=null;
-try {
-    Class.forName("com.mysql.jdbc.Driver");
-    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-    sta=cnx.createStatement();
-    rs=sta.executeQuery("select dni_pro,apellidos_pro,nombre_pro from profesores order by apellidos_pro");
-    while (rs.next()){
-%>
-                                <option value="<%=rs.getString(1)%>"><%=rs.getString(2)%>, <%=rs.getString(3)%></option>
-<% 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-    } catch (Exception e) {
-    }
-%>  
-                            </select>
-                            <button style="background: transparent;border: 0px;"><img src="media/busqueda.png"></button>
-                        </form>
-                    </div>
-                            
-                    <div class="col-md-3">
                         <form>
                             <select style="font-size: 12px;width: 70%">
                                 <option>Docentes con cursos</option>
 <%
+    Connection cnx=null;
+    Statement sta=null;
+    ResultSet rs=null;
 try {
     Class.forName("com.mysql.jdbc.Driver");
     cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
@@ -119,7 +98,7 @@ try {
             </div>
             <!--Contenido-->
             <div class="row">
-                <div class="col-md-12">
+                <%--<div class="col-md-12">
                     <div class="col-md-12" style="margin-top: 3%;">
                         <div class="table-responsive" style="max-height: 300px;font-size: 12px;">
                         <table class="table table-hover">
@@ -167,7 +146,60 @@ try {
                         </table>
                         </div>
                     </div>
-                </div>
+                </div>--%>
+                            
+                            
+                            
+                <div class="col-md-12">
+                    <div class="col-md-12" style="margin-top: 3%;">
+                        <div class="table-responsive" style="max-height: 350px;font-size: 12px;">
+                        <!--<table class="table table-hover">-->
+                        <table id="example" class="display" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th></th>                                        
+                                    <th style="text-align: center">Docente</th>
+                                    <th style="text-align: center">Sede</th>
+                                    <th style="text-align: center">Profesión</th>
+                                    <th style="text-align: center">Grado</th>
+                                    <th style="text-align: center">Opción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+<%
+    try {
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("select * from profesores order by apellidos_pro");
+    while (rs.next()){
+%>
+                                <tr>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a><img src="media/usuario.png"></a></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';"><%=rs.getString(3)%>, <%=rs.getString(2)%></a></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(15)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(9)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(8)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
+                                        <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
+                                            <img src="media/editar.png" alt="Editar"></a>
+                                        <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
+                                            <img src="media/eliminar.png" alt="Eliminar"></a>
+                                    </td>
+                                </tr>                      
+<% 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
+    } catch (Exception e) {
+    }
+%>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>            
             </div>
             
             
@@ -264,7 +296,7 @@ try {
                                 </tr>
                                 <tr class="">
                                     <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" class=""><i class="material-icons">location_on</i></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"colspan="4" class=""><%=rs.getString(5)%>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;" colspan="4" class=""><%=rs.getString(5)%>
                                 </tr>
                             </tbody>
 <% 
@@ -282,12 +314,40 @@ cnx.close();
                             <a class="popup-cerrar2" href="#" title="Cerrar" onclick = "document.getElementById('light2').style.display='none';">x</a>
         </div>
     </div>                            
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable({
+        "language": {
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
+}
+    } );
+} );
+</script>
                             
                             
                             
-                            
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     </body>
