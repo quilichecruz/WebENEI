@@ -36,4 +36,60 @@ public class Consultas extends Conexion{
         }
         return false;
     }
+    
+        public boolean registro_docente(String dni,String nombre,String apellidos,String tele,String dire,String corr,String cpre,String grad,String prof,String tipo,String cpos,String espe,String dipl,String expe,String sede,String c1,String c2,String c3,String c4,String c5,String c6,String c7,String c8,String c9,String c10,String c11,String c12){ 
+        
+        PreparedStatement pst = null;
+        
+        try {
+            String consulta="insert into profesores(dni_pro,nombre_pro,apellidos_pro,tele_pro,dire_pro,corr_pro,cpre_pro,grad_pro,prof_pro,tipo_pro,cpos_pro,espe_pro,dipl_pro,expe_pro,sede_pro,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            pst = getConexion().prepareStatement(consulta);
+            pst.setString(1, dni);
+            pst.setString(2, nombre);
+            pst.setString(3, apellidos);
+            pst.setString(4, tele);
+            pst.setString(5, dire);
+            pst.setString(6, corr);
+            pst.setString(7, cpre);
+            pst.setString(8, grad);
+            pst.setString(9, prof);
+            pst.setString(10, tipo);
+            pst.setString(11, cpos);
+            pst.setString(12, espe);
+            pst.setString(13, dipl);
+            pst.setString(14, expe);
+            pst.setString(15, sede);
+            pst.setString(16, c1);
+            pst.setString(17, c2);
+            pst.setString(18, c3);
+            pst.setString(19, c4);
+            pst.setString(20, c5);
+            pst.setString(21, c6);
+            pst.setString(22, c7);
+            pst.setString(23, c8);
+            pst.setString(24, c9);
+            pst.setString(25, c10);
+            pst.setString(26, c11);
+            pst.setString(27, c12);
+            
+            if(pst.executeUpdate() == 1){
+            return true;
+            }
+        } catch (Exception ex) {
+            System.err.println("ERROR"+ ex);
+        }finally{
+            try {
+                 if (getConexion() != null) getConexion().close();
+                 if (pst != null) pst.close();
+                } catch (Exception e) {
+            System.err.println("ERROR"+ e);
+        }
+      }
+        return false;
+    }
+
+    
+    
 }
+
+

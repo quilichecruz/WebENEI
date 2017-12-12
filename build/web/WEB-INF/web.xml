@@ -4,9 +4,25 @@
         <servlet-name>session_admin</servlet-name>
         <servlet-class>Servlet.session_admin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>registro_admin</servlet-name>
+        <servlet-class>Servlet.registro_admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>docentes_admin</servlet-name>
+        <servlet-class>Servlet.docentes_admin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>session_admin</servlet-name>
         <url-pattern>/session_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registro_admin</servlet-name>
+        <url-pattern>/registro_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>docentes_admin</servlet-name>
+        <url-pattern>/docentes_admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
