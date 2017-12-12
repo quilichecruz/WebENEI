@@ -21,10 +21,8 @@
         <script type="text/javascript"  src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script type="text/javascript"  src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-        
         <link rel="stylesheet" href="assets/css/custom/inicio-admin.css">
         <link rel="stylesheet" href="assets/css/custom/admin-popup.css">
-        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 
@@ -217,8 +215,6 @@ try {
             </div>
         </div>
     </div>
-    
-    
     
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
@@ -523,102 +519,101 @@ try {
                         <a class="popup-cerrar" href="#" title="Cerrar" onclick = "document.getElementById('light').style.display='none';">x</a>
     </div>
 </div>                             
-                            
-                            
+                                                  
 <div class="modal-wrapper" id="popup2">
-        <div class="popup-contenedor2"> 
-            <div class="row" id="light2" style="display: block;">
-                <div class="col-m12">
-                    <div class="table-responsive">
-                        <table class="table table-hover" style="font-size: 12px;">    
-                            <thead>
-                                <tr>
-                                    <th style="text-align: center;">DNI</th>
-                                    <th style="text-align: center;">Apellidos y Nombres</th>
-                                    <th style="text-align: center;">Profesión</th>
-                                    <th style="text-align: center;">Grado</th>
-                                    <th style="text-align: center;">Opción</th>
-                                </tr>
-                            </thead>
+    <div class="popup-contenedor2"> 
+        <div class="row" id="light2" style="display: block;">
+            <div class="col-m12">
+                <div class="table-responsive">
+                    <table class="table table-hover" style="font-size: 12px;">    
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">DNI</th>
+                                <th style="text-align: center;">Apellidos y Nombres</th>
+                                <th style="text-align: center;">Profesión</th>
+                                <th style="text-align: center;">Grado</th>
+                                <th style="text-align: center;">Opción</th>
+                            </tr>
+                        </thead>
 <%
-    try {
-        Class.forName("com.mysql.jdbc.Driver");
-        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-        sta=cnx.createStatement();
-        rs=sta.executeQuery("SELECT dni_pro,nombre_pro,apellidos_pro,tele_pro,dire_pro,corr_pro,"
-                + "cpre_pro,grad_pro,prof_pro,tipo_pro,cpos_pro,espe_pro,dipl_pro,expe_pro,sede_pro,"
-                + "if(c1 !='null',c1,''), if(c2 !='null',c2,''),"
-                + "if(c3 !='null',c3,''), if(c4 !='null',c4,''),"
-                + "if(c5 !='null',c5,''), if(c6 !='null',c6,''),"
-                + "if(c7 !='null',c7,''), if(c8 !='null',c8,''),"
-                + "if(c9 !='null',c9,''), if(c10 !='null',c10,''),"
-                + "if(c11 !='null',c11,''), if(c12 !='null',c12,'')"
-                + "FROM profesores "
-                + "WHERE dni_pro="+dnipro);
-        while (rs.next()){
+try {
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("SELECT dni_pro,nombre_pro,apellidos_pro,tele_pro,dire_pro,corr_pro,"
+            + "cpre_pro,grad_pro,prof_pro,tipo_pro,cpos_pro,espe_pro,dipl_pro,expe_pro,sede_pro,"
+            + "if(c1 !='null',c1,''), if(c2 !='null',c2,''),"
+            + "if(c3 !='null',c3,''), if(c4 !='null',c4,''),"
+            + "if(c5 !='null',c5,''), if(c6 !='null',c6,''),"
+            + "if(c7 !='null',c7,''), if(c8 !='null',c8,''),"
+            + "if(c9 !='null',c9,''), if(c10 !='null',c10,''),"
+            + "if(c11 !='null',c11,''), if(c12 !='null',c12,'')"
+            + "FROM profesores "
+            + "WHERE dni_pro="+dnipro);
+    while (rs.next()){
 %>
-                            <tbody>
-                                <tr>
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(1)%></td>
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(3)%> <%=rs.getString(2)%></td>
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(9)%></td>
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(8)%></td>
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;">
-                                        <a href="#" style="text-decoration: none; color: #000;"><i class="material-icons">edit</i></a>
-                                        <a href="#" style="text-decoration: none; color: #000;"><i class="material-icons">highlight_off</i></a>
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class="" title="Cursos de referencia"><i class="material-icons">import_contacts</i>
-                                    </td>
-                                    <td colspan="4" class="" title="Cursos de referencia" style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;">
-                                        <ul style="list-style-type: none; padding: 0px 0px;color: #0069B4">
-                                           <li><%=rs.getString(16)%></li>
-                                           <li><%=rs.getString(17)%></li>
-                                           <li><%=rs.getString(18)%></li>
-                                           <li><%=rs.getString(19)%></li>
-                                           <li><%=rs.getString(20)%></li>
-                                           <li><%=rs.getString(21)%></li>
-                                           <li><%=rs.getString(22)%></li>
-                                           <li><%=rs.getString(23)%></li>
-                                           <li><%=rs.getString(24)%></li>
-                                           <li><%=rs.getString(25)%></li>
-                                           <li><%=rs.getString(26)%></li>
-                                           <li><%=rs.getString(27)%></li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class="" title="Especialidad"><i class="material-icons">school</i></td>
-                                    <td style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" colspan="4" class="" title="Especialidad"><%=rs.getString(12)%></td>
-                                </tr>
-                                <tr class="">
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class="" title="Experiencia"><i class="material-icons">school</i></td>
-                                    <td style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" colspan="4" class="" title="Experiencia"><%=rs.getString(14)%></td>
-                                </tr>
-                                <tr class="">
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class=""><i class="material-icons">phone</i></td>
-                                    <td style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" colspan="4" class=""><%=rs.getString(4)%> - <%=rs.getString(6)%></td>
-                                </tr>
-                                <tr class="">
-                                    <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class=""><i class="material-icons">location_on</i></td>
-                                    <td style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" colspan="4" class=""><%=rs.getString(5)%>
-                                </tr>
-                            </tbody>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(1)%></td>
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(3)%> <%=rs.getString(2)%></td>
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(9)%></td>
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(8)%></td>
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;">
+                                    <a href="#" style="text-decoration: none; color: #000;"><i class="material-icons">edit</i></a>
+                                    <a href="#" style="text-decoration: none; color: #000;"><i class="material-icons">highlight_off</i></a>
+                                </td>
+                            </tr>
+                            <tr class="">
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class="" title="Cursos de referencia"><i class="material-icons">import_contacts</i>
+                                </td>
+                                <td colspan="4" class="" title="Cursos de referencia" style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;">
+                                    <ul style="list-style-type: none; padding: 0px 0px;color: #0069B4">
+                                       <li><%=rs.getString(16)%></li>
+                                       <li><%=rs.getString(17)%></li>
+                                       <li><%=rs.getString(18)%></li>
+                                       <li><%=rs.getString(19)%></li>
+                                       <li><%=rs.getString(20)%></li>
+                                       <li><%=rs.getString(21)%></li>
+                                       <li><%=rs.getString(22)%></li>
+                                       <li><%=rs.getString(23)%></li>
+                                       <li><%=rs.getString(24)%></li>
+                                       <li><%=rs.getString(25)%></li>
+                                       <li><%=rs.getString(26)%></li>
+                                       <li><%=rs.getString(27)%></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class="" title="Especialidad"><i class="material-icons">school</i></td>
+                                <td style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" colspan="4" class="" title="Especialidad"><%=rs.getString(12)%></td>
+                            </tr>
+                            <tr class="">
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class="" title="Experiencia"><i class="material-icons">school</i></td>
+                                <td style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" colspan="4" class="" title="Experiencia"><%=rs.getString(14)%></td>
+                            </tr>
+                            <tr class="">
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class=""><i class="material-icons">phone</i></td>
+                                <td style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" colspan="4" class=""><%=rs.getString(4)%> - <%=rs.getString(6)%></td>
+                            </tr>
+                            <tr class="">
+                                <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" class=""><i class="material-icons">location_on</i></td>
+                                <td style="padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;" colspan="4" class=""><%=rs.getString(5)%>
+                            </tr>
+                        </tbody>
 <% 
-    }
+}
 sta.close();
 rs.close();
 cnx.close();
-    } catch (Exception e) {
-           }
+} catch (Exception e) {
+       }
 %>
-                        </table>
-                    </div> 
-                </div>
+                    </table>
+                </div> 
             </div>
-                            <a class="popup-cerrar2" href="#" title="Cerrar" onclick = "document.getElementById('light2').style.display='none';">x</a>
         </div>
+                        <a class="popup-cerrar2" href="#" title="Cerrar" onclick = "document.getElementById('light2').style.display='none';">x</a>
+    </div>
 </div>                            
     
 <script type="text/javascript">
