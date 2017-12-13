@@ -153,7 +153,7 @@ try {
                 </div>--%>  
                 <div class="col-md-12">
                     <div class="col-md-12" style="margin-top: 3%;">
-                        <div class="table-responsive" style="max-height: 350px;font-size: 12px;">
+                        <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
                         <!--<table class="table table-hover">-->
                         <table id="example" class="display" cellspacing="0" width="100%">
                             <thead>
@@ -176,7 +176,7 @@ try {
     while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a><i class="material-icons" style="font-size: 18px">account_circle</i></a></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?dnipro=<%=rs.getString(1)%>&nombrepro=<%=rs.getString(2)%>&apellidospro=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 18px">account_circle</i></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';"><%=rs.getString(3)%>, <%=rs.getString(2)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(15)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(9)%></td>
@@ -202,9 +202,71 @@ try {
                         </table>
                         </div>
                     </div>
-                </div>            
-            </div>
-            
+                </div>
+                            
+                <div class="col-md-12">
+                    <div class="col-md-12" style="margin-top: 3%;">
+                        <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
+                        <table id="example1" class="display" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th></th>                                        
+                                    <th style="text-align: center">Curso</th>
+                                    <th style="text-align: center">Inscritos</th>
+                                    <th style="text-align: center">Vacantes</th>
+                                    <th style="text-align: center">Disponibles</th>
+                                    <th style="text-align: center">Frecuencia</th>
+                                    <th style="text-align: center">Fecha Inicio</th>
+                                    <th style="text-align: center">Fecha Término</th>
+                                    <th style="text-align: center">Estado</th>
+                                    <th style="text-align: center">Lab</th>
+                                    <th style="text-align: center">Opción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+<%
+try {
+        Class.forName("com.mysql.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+        sta=cnx.createStatement();
+        rs=sta.executeQuery("select T1.id_registro,T1.cod_cur,T3.nombre_cur,T1.paga,T1.dni_pro,T2.nombre_pro,T2.apellidos_pro,T1.fechatini,T1.fechatfin,T1.esta,T1.labo,T3.vaca_cur,-sum(paga-vaca_cur),T1.frec FROM registro T1 INNER JOIN profesores T2 INNER JOIN cursos T3  ON T1.dni_pro = T2.dni_pro AND T1.cod_cur = T3.cod_cur where T1.dni_pro="+dnipro+" group by T1.id_registro");
+        while (rs.next()){
+%>
+                                <tr>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a><i class="material-icons" style="font-size: 18px">import_contacts</i></a></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getInt(4)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getInt(12)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getInt(13)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(14)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(8)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(9)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(10)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(11)%></td>
+                                    <td>
+                                        <a href="editarrela.jsp?id=<%=rs.getString(1)%>">
+                                        </a>   
+                                        <a href="sesion.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
+                                        </a>
+                                        <a href="eliminarrela.jsp?id=<%=rs.getString(1)%>" onclick="return eliminar()">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                <% 
+}
+sta.close();
+rs.close();
+cnx.close();
+    } catch (Exception e) {
+           }
+%>
+                            </table>
+                        </div>
+                    </div> 
+                </div>
+                </div>    
+
             
             
             <!--Footer-->
@@ -511,7 +573,7 @@ try {
                         %>  
                         </select>
 
-                        <button onclick="return registrar()" style="margin-top: 10px;margin-left: 90%;color: #fafafa;background: #0069B4;border: 0px;padding: 10px 10px 10px 10px;font-size: 10px;">Registrar</button>
+                        <button onclick="return registrar()" style="margin-top: 10px;margin-left: 92%;color: #fafafa;background: #0069B4;border: 0px;padding: 10px 10px 10px 10px;font-size: 10px;">Registrar</button>
                     </div>  
                 </form>
             </div>
@@ -614,11 +676,43 @@ cnx.close();
         </div>
                         <a class="popup-cerrar2" href="#" title="Cerrar" onclick = "document.getElementById('light2').style.display='none';">x</a>
     </div>
-</div>                            
+</div>
+
     
 <script type="text/javascript">
     $(document).ready(function() {
     $('#example').DataTable({
+        "language": {
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
+}
+    } );
+} );
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#example1').DataTable({
         "language": {
     "sProcessing":     "Procesando...",
     "sLengthMenu":     "Mostrar _MENU_ registros",

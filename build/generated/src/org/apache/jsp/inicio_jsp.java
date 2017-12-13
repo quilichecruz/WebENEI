@@ -62,10 +62,8 @@ public final class inicio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script type=\"text/javascript\"  src=\"https://code.jquery.com/jquery-1.12.4.js\"></script>\n");
       out.write("        <script type=\"text/javascript\"  src=\"https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js\"></script>\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css\">\n");
-      out.write("        \n");
       out.write("        <link rel=\"stylesheet\" href=\"assets/css/custom/inicio-admin.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"assets/css/custom/admin-popup.css\">\n");
-      out.write("        \n");
       out.write("        <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css\">\n");
       out.write("\n");
@@ -247,581 +245,558 @@ try {
       out.write("        </div>\n");
       out.write("    </div>\n");
       out.write("    \n");
-      out.write("    \n");
-      out.write("    \n");
       out.write("  <div class=\"tab-pane fade\" id=\"nav-profile\" role=\"tabpanel\" aria-labelledby=\"nav-profile-tab\">...</div>\n");
       out.write("  <div class=\"tab-pane fade\" id=\"nav-contact\" role=\"tabpanel\" aria-labelledby=\"nav-contact-tab\">...</div>\n");
       out.write("</div>\n");
       out.write("\n");
       out.write("<div class=\"modal-wrapper\" id=\"popup\">\n");
-      out.write("   <div class=\"popup-contenedor\">\n");
+      out.write("    <div style=\"position: relative;margin:10% auto;padding:30px 30px;background-color: #fafafa;color:#333;border-radius: 3px;width:80%;\">\n");
       out.write("        <div class=\"row\" id=\"light\" style=\"display: none;\">\n");
       out.write("            <div class=\"col-md-12\">\n");
       out.write("                <form action=\"docentes_admin\" name=\"holapro\">\n");
       out.write("                    <div class=\"row\">\n");
       out.write("                        <div class=\"col-md-2 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"dnipro\" placeholder=\"DNI\" required maxlength=\"12\" style=\"width: 100%\">\n");
+      out.write("                            <input type=\"text\" name=\"dnipro\" placeholder=\"DNI\" required maxlength=\"12\" style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\">\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-4 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"nombrepro\" placeholder=\"Nombres\" required style=\"width: 100%\">\n");
+      out.write("                            <input type=\"text\" name=\"nombrepro\" placeholder=\"Nombre\" required style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\">\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-6 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"apellidospro\" placeholder=\"Apellidos\" required style=\"width: 100%\">\n");
+      out.write("                            <input type=\"text\" name=\"apellidospro\" placeholder=\"Apellidos\" required style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\">\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-2 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"tele\" placeholder=\"Teléfono\" required style=\"width: 100%\">\n");
+      out.write("                            <input type=\"text\" name=\"sede\" placeholder=\"Sede\"  style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\">\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-10 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"corr\" placeholder=\"Email\" required style=\"width: 100%\">\n");
+      out.write("                            <input type=\"text\" name=\"dire\" placeholder=\"Dirección\"  style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\">\n");
       out.write("                        </div>\n");
-      out.write("                        <div class=\"col-md-2 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"sede\" placeholder=\"Sede\" required style=\"width: 100%\">\n");
+      out.write("                        <div class=\"col-md-6 mb-2\">\n");
+      out.write("                            <input type=\"text\" name=\"tele\" placeholder=\"Teléfono\"  style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\">\n");
       out.write("                        </div>\n");
-      out.write("                        <div class=\"col-md-10 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"dire\" placeholder=\"Dirección\" required style=\"width: 100%\">\n");
+      out.write("                        <div class=\"col-md-6 mb-2\">\n");
+      out.write("                            <input type=\"text\" name=\"corr\" placeholder=\"Email\"  style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\">\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-8 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"prof\" placeholder=\"Profesión\" required style=\"width: 100%\">\n");
+      out.write("                            <input type=\"text\" name=\"prof\" placeholder=\"Profesión\"  style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\">\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-4 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"grad\" placeholder=\"Grado\" required style=\"width: 100%\">\n");
+      out.write("                            <input type=\"text\" name=\"grad\" placeholder=\"Grado\"  style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\">\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-12 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"apellidospro\" placeholder=\"Especialidad\" required style=\"width: 100%\">\n");
+      out.write("                            <textarea name=\"espe\" style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\" placeholder=\"Especialidad\"></textarea>\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-12 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"apellidospro\" placeholder=\"Experiencia\" required style=\"width: 100%\">\n");
+      out.write("                            <textarea name=\"expe\" style=\"width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3\" placeholder=\"Experiencia\"></textarea>\n");
       out.write("                        </div>\n");
-      out.write("\n");
-      out.write("        <!--<input type=\"text\" name=\"dnipro\" placeholder=\"DNI o RUC *\" required=\"required\" class=\"myinput2\" maxlength=\"12\">\n");
-      out.write("        <input type=\"text\" name=\"nombrepro\" placeholder=\"Nombres *\" required=\"required\" class=\"myinput\">\n");
-      out.write("        <input type=\"text\" name=\"apellidospro\" placeholder=\"Apellidos *\" required=\"required\" class=\"myinput\">\n");
-      out.write("        <input type=\"text\" name=\"tele\" placeholder=\"Teléfono\" class=\"myinput2\">\n");
-      out.write("        <input type=\"text\" name=\"corr\" placeholder=\"Correo Electrónico\" class=\"myinput3\">\n");
-      out.write("        <input type=\"text\" name=\"sede\" placeholder=\"Sede\" class=\"myinput2\">\n");
-      out.write("        <input type=\"text\" name=\"dire\" placeholder=\"Dirección\" class=\"myinput3\">\n");
-      out.write("        <input type=\"text\" name=\"grad\" placeholder=\"Grado\" class=\"myinput2\">\n");
-      out.write("        <input type=\"text\" name=\"prof\" placeholder=\"Profesión\" class=\"myinput3\">\n");
-      out.write("        <textarea name=\"espe\" placeholder=\"Especialidad\"></textarea>\n");
-      out.write("        <textarea name=\"expe\" placeholder=\"Experiencia\"></textarea>    \n");
-      out.write("        <label class=\"mylabel\">Agregar cursos de referencia + \n");
-      out.write("        <input type=\"checkbox\" name=\"c33\" onclick=\"showMe('j1', this),showMe('j2', 'none'),showMe('s2', this),showMe('s3', this),showMe('s4', this),showMe('s5', 'none'),showMe('s6', 'none'),showMe('s7', 'none'),showMe('s8', 'none'),showMe('s9', 'none'),showMe('s10', 'none'),showMe('s11', 'none'),showMe('s12', 'none')\">\n");
-      out.write("        </label>\n");
-      out.write("        <select name=\"c1\" id=\"s1\" style=\"display: block;\" class=\"myselectregistro\">\n");
-      out.write("    <option value=\"null\">Curso 1</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>-->\n");
-      out.write("    <select name=\"c2\" id=\"s2\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 2</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
-      out.write("    <select name=\"c3\" id=\"s3\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 3</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("\n");
-      out.write("    </select>\n");
-      out.write("    <select name=\"c4\" id=\"s4\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 4</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("    ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
-      out.write("    \n");
-      out.write("    <label class=\"mylabel\" style=\"display: none\" id=\"j1\">Agregar cursos de referencia + <input type=\"checkbox\" name=\"c4\"  onclick=\"showMe('j2', this),showMe('s5', this),showMe('s6', this),showMe('s7', this),showMe('s8', this)\"><br></label>\n");
-      out.write("\n");
-      out.write("    <select name=\"c5\" id=\"s5\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 5</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
-      out.write("    <select name=\"c6\" id=\"s6\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 6</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
-      out.write("    <select name=\"c7\" id=\"s7\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 7</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
-      out.write("    <select name=\"c8\" id=\"s8\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 8</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
-      out.write("    \n");
-      out.write("    <label class=\"mylabel\" style=\"display: none\" id=\"j2\">Agregar cursos de referencia + <input type=\"checkbox\" name=\"c4\"  onclick=\"showMe('s9', this),showMe('s10', this),showMe('s11', this),showMe('s12', this)\"><br></label>\n");
-      out.write("\n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write("    <select name=\"c9\" id=\"s9\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 9</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
-      out.write("    <select name=\"c10\" id=\"s10\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 10</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
-      out.write("    <select name=\"c11\" id=\"s11\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 11</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
-      out.write("    <select name=\"c12\" id=\"s12\" style=\"display: none\" class=\"myselectregistro\">\n");
-      out.write("        <option value=\"null\">Curso 12</option>\n");
-      out.write("    ");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-            sta=cnx.createStatement();
-            rs=sta.executeQuery("select * from cursos");
-            while (rs.next()){
-    
-      out.write("\n");
-      out.write("    <option value=\"");
-      out.print(rs.getString(2));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
-      out.write("                          ");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-        } catch (Exception e) {
-               }
-    
-      out.write("  \n");
-      out.write("    </select>\n");
       out.write("        \n");
-      out.write("        ");
+      out.write("                        <label style=\"width: 100%;font-size: 10px;margin-left: 15px;\">Agregar cursos de referencia + \n");
+      out.write("                        <input type=\"checkbox\" name=\"c33\" onclick=\"showMe('j1', this),showMe('j2', 'none'),showMe('s2', this),showMe('s3', this),showMe('s4', this),showMe('s5', 'none'),showMe('s6', 'none'),showMe('s7', 'none'),showMe('s8', 'none'),showMe('s9', 'none'),showMe('s10', 'none'),showMe('s11', 'none'),showMe('s12', 'none')\">\n");
+      out.write("                        </label>\n");
       out.write("\n");
-      out.write("        ");
+      out.write("                        <select name=\"c1\" id=\"s1\" style=\"display: block;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                        <option value=\"null\">Curso 1</option>\n");
+      out.write("                ");
+
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                        sta=cnx.createStatement();
+                        rs=sta.executeQuery("select * from cursos");
+                        while (rs.next()){
+                
       out.write("\n");
-      out.write("        <label class=\"mylabel\">* Son datos obligatorios</label>\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                ");
+ 
+                }
+                sta.close();
+                rs.close();
+                cnx.close();
+                    } catch (Exception e) {
+                           }
+                
+      out.write("  \n");
+      out.write("                        </select>\n");
+      out.write("                        <select name=\"c2\" id=\"s2\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                        <option value=\"null\">Curso 2</option>\n");
+      out.write("                ");
+
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                        sta=cnx.createStatement();
+                        rs=sta.executeQuery("select * from cursos");
+                        while (rs.next()){
+                
       out.write("\n");
-      out.write("        <button class=\"btnregistro\" onclick=\"return registrar()\">Registrar</button>\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                ");
+ 
+                }
+                sta.close();
+                rs.close();
+                cnx.close();
+                    } catch (Exception e) {
+                           }
+                
+      out.write("  \n");
+      out.write("                    </select>\n");
+      out.write("                        <select name=\"c3\" id=\"s3\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                        <option value=\"null\">Curso 3</option>\n");
+      out.write("                    ");
+
+                        try {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                            sta=cnx.createStatement();
+                            rs=sta.executeQuery("select * from cursos");
+                            while (rs.next()){
+                    
       out.write("\n");
-      out.write("    </div>  \n");
-      out.write("    </form>\n");
+      out.write("                    <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                                          ");
+ 
+                    }
+                    sta.close();
+                    rs.close();
+                    cnx.close();
+                        } catch (Exception e) {
+                               }
+                    
+      out.write("\n");
+      out.write("                    </select>\n");
+      out.write("                        <select name=\"c4\" id=\"s4\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                        <option value=\"null\">Curso 4</option>\n");
+      out.write("                    ");
+
+                        try {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                            sta=cnx.createStatement();
+                            rs=sta.executeQuery("select * from cursos");
+                            while (rs.next()){
+                    
+      out.write("\n");
+      out.write("                    <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                    ");
+ 
+                    }
+                    sta.close();
+                    rs.close();
+                    cnx.close();
+                        } catch (Exception e) {
+                               }
+                    
+      out.write("  \n");
+      out.write("                    </select>\n");
+      out.write("\n");
+      out.write("                        <label style=\"margin-top: 10px;display: none;width: 100%;font-size: 10px;margin-left: 15px;\" id=\"j1\">Agregar cursos de referencia + <input type=\"checkbox\" name=\"c4\"  onclick=\"showMe('j2', this),showMe('s5', this),showMe('s6', this),showMe('s7', this),showMe('s8', this)\"><br></label>\n");
+      out.write("\n");
+      out.write("                        <select name=\"c5\" id=\"s5\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                            <option value=\"null\">Curso 5</option>\n");
+      out.write("                        ");
+
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                                sta=cnx.createStatement();
+                                rs=sta.executeQuery("select * from cursos");
+                                while (rs.next()){
+                        
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                                              ");
+ 
+                        }
+                        sta.close();
+                        rs.close();
+                        cnx.close();
+                            } catch (Exception e) {
+                                   }
+                        
+      out.write("  \n");
+      out.write("                        </select>\n");
+      out.write("                        <select name=\"c6\" id=\"s6\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                            <option value=\"null\">Curso 6</option>\n");
+      out.write("                        ");
+
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                                sta=cnx.createStatement();
+                                rs=sta.executeQuery("select * from cursos");
+                                while (rs.next()){
+                        
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                                              ");
+ 
+                        }
+                        sta.close();
+                        rs.close();
+                        cnx.close();
+                            } catch (Exception e) {
+                                   }
+                        
+      out.write("  \n");
+      out.write("                        </select>\n");
+      out.write("                        <select name=\"c7\" id=\"s7\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                            <option value=\"null\">Curso 7</option>\n");
+      out.write("                        ");
+
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                                sta=cnx.createStatement();
+                                rs=sta.executeQuery("select * from cursos");
+                                while (rs.next()){
+                        
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                                              ");
+ 
+                        }
+                        sta.close();
+                        rs.close();
+                        cnx.close();
+                            } catch (Exception e) {
+                                   }
+                        
+      out.write("  \n");
+      out.write("                        </select>\n");
+      out.write("                        <select name=\"c8\" id=\"s8\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                            <option value=\"null\">Curso 8</option>\n");
+      out.write("                        ");
+
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                                sta=cnx.createStatement();
+                                rs=sta.executeQuery("select * from cursos");
+                                while (rs.next()){
+                        
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                                              ");
+ 
+                        }
+                        sta.close();
+                        rs.close();
+                        cnx.close();
+                            } catch (Exception e) {
+                                   }
+                        
+      out.write("  \n");
+      out.write("                        </select>\n");
+      out.write("\n");
+      out.write("                        <label style=\"margin-top: 10px;display: none;width: 100%;font-size: 10px;margin-left: 15px;\" id=\"j2\">Agregar cursos de referencia + <input type=\"checkbox\" name=\"c4\"  onclick=\"showMe('s9', this),showMe('s10', this),showMe('s11', this),showMe('s12', this)\"><br></label>\n");
+      out.write("\n");
+      out.write("                        <select name=\"c9\" id=\"s9\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                            <option value=\"null\">Curso 9</option>\n");
+      out.write("                        ");
+
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                                sta=cnx.createStatement();
+                                rs=sta.executeQuery("select * from cursos");
+                                while (rs.next()){
+                        
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                                              ");
+ 
+                        }
+                        sta.close();
+                        rs.close();
+                        cnx.close();
+                            } catch (Exception e) {
+                                   }
+                        
+      out.write("  \n");
+      out.write("                        </select>\n");
+      out.write("                        <select name=\"c10\" id=\"s10\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                            <option value=\"null\">Curso 10</option>\n");
+      out.write("                        ");
+
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                                sta=cnx.createStatement();
+                                rs=sta.executeQuery("select * from cursos");
+                                while (rs.next()){
+                        
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                                              ");
+ 
+                        }
+                        sta.close();
+                        rs.close();
+                        cnx.close();
+                            } catch (Exception e) {
+                                   }
+                        
+      out.write("  \n");
+      out.write("                        </select>\n");
+      out.write("                        <select name=\"c11\" id=\"s11\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                            <option value=\"null\">Curso 11</option>\n");
+      out.write("                        ");
+
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                                sta=cnx.createStatement();
+                                rs=sta.executeQuery("select * from cursos");
+                                while (rs.next()){
+                        
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                                              ");
+ 
+                        }
+                        sta.close();
+                        rs.close();
+                        cnx.close();
+                            } catch (Exception e) {
+                                   }
+                        
+      out.write("  \n");
+      out.write("                        </select>\n");
+      out.write("                        <select name=\"c12\" id=\"s12\" style=\"display: none;font-size: 13px;margin-left: 15px;width: 40%\">\n");
+      out.write("                            <option value=\"null\">Curso 12</option>\n");
+      out.write("                        ");
+
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+                                sta=cnx.createStatement();
+                                rs=sta.executeQuery("select * from cursos");
+                                while (rs.next()){
+                        
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(rs.getString(2));
+      out.write('"');
+      out.write('>');
+      out.print(rs.getString(2));
+      out.write("</option>\n");
+      out.write("                                              ");
+ 
+                        }
+                        sta.close();
+                        rs.close();
+                        cnx.close();
+                            } catch (Exception e) {
+                                   }
+                        
+      out.write("  \n");
+      out.write("                        </select>\n");
+      out.write("\n");
+      out.write("                        <button onclick=\"return registrar()\" style=\"margin-top: 10px;margin-left: 90%;color: #fafafa;background: #0069B4;border: 0px;padding: 10px 10px 10px 10px;font-size: 10px;\">Registrar</button>\n");
+      out.write("                    </div>  \n");
+      out.write("                </form>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("                        <a class=\"popup-cerrar\" href=\"#\" title=\"Cerrar\" onclick = \"document.getElementById('light').style.display='none';\">x</a>\n");
       out.write("    </div>\n");
-      out.write("    </div>\n");
-      out.write("\n");
-      out.write("        <a class=\"popup-cerrar\" href=\"#\" title=\"Cerrar\" onclick = \"document.getElementById('light').style.display='none';\">x</a>\n");
-      out.write("   </div>\n");
       out.write("</div>                             \n");
-      out.write("                            \n");
-      out.write("                            \n");
+      out.write("                                                  \n");
       out.write("<div class=\"modal-wrapper\" id=\"popup2\">\n");
-      out.write("        <div class=\"popup-contenedor2\"> \n");
-      out.write("            <div class=\"row\" id=\"light2\" style=\"display: block;\">\n");
-      out.write("                <div class=\"col-m12\">\n");
-      out.write("                    <div class=\"table-responsive\">\n");
-      out.write("                        <table class=\"table table-hover\" style=\"font-size: 12px;\">    \n");
-      out.write("                            <thead>\n");
-      out.write("                                <tr>\n");
-      out.write("                                    <th style=\"text-align: center;\">DNI</th>\n");
-      out.write("                                    <th style=\"text-align: center;\">Apellidos y Nombres</th>\n");
-      out.write("                                    <th style=\"text-align: center;\">Profesión</th>\n");
-      out.write("                                    <th style=\"text-align: center;\">Grado</th>\n");
-      out.write("                                    <th style=\"text-align: center;\">Opción</th>\n");
-      out.write("                                </tr>\n");
-      out.write("                            </thead>\n");
+      out.write("    <div class=\"popup-contenedor2\"> \n");
+      out.write("        <div class=\"row\" id=\"light2\" style=\"display: block;\">\n");
+      out.write("            <div class=\"col-m12\">\n");
+      out.write("                <div class=\"table-responsive\">\n");
+      out.write("                    <table class=\"table table-hover\" style=\"font-size: 12px;\">    \n");
+      out.write("                        <thead>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th style=\"text-align: center;\">DNI</th>\n");
+      out.write("                                <th style=\"text-align: center;\">Apellidos y Nombres</th>\n");
+      out.write("                                <th style=\"text-align: center;\">Profesión</th>\n");
+      out.write("                                <th style=\"text-align: center;\">Grado</th>\n");
+      out.write("                                <th style=\"text-align: center;\">Opción</th>\n");
+      out.write("                            </tr>\n");
+      out.write("                        </thead>\n");
 
-    try {
-        Class.forName("com.mysql.jdbc.Driver");
-        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-        sta=cnx.createStatement();
-        rs=sta.executeQuery("SELECT dni_pro,nombre_pro,apellidos_pro,tele_pro,dire_pro,corr_pro,"
-                + "cpre_pro,grad_pro,prof_pro,tipo_pro,cpos_pro,espe_pro,dipl_pro,expe_pro,sede_pro,"
-                + "if(c1 !='null',c1,''), if(c2 !='null',c2,''),"
-                + "if(c3 !='null',c3,''), if(c4 !='null',c4,''),"
-                + "if(c5 !='null',c5,''), if(c6 !='null',c6,''),"
-                + "if(c7 !='null',c7,''), if(c8 !='null',c8,''),"
-                + "if(c9 !='null',c9,''), if(c10 !='null',c10,''),"
-                + "if(c11 !='null',c11,''), if(c12 !='null',c12,'')"
-                + "FROM profesores "
-                + "WHERE dni_pro="+dnipro);
-        while (rs.next()){
+try {
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("SELECT dni_pro,nombre_pro,apellidos_pro,tele_pro,dire_pro,corr_pro,"
+            + "cpre_pro,grad_pro,prof_pro,tipo_pro,cpos_pro,espe_pro,dipl_pro,expe_pro,sede_pro,"
+            + "if(c1 !='null',c1,''), if(c2 !='null',c2,''),"
+            + "if(c3 !='null',c3,''), if(c4 !='null',c4,''),"
+            + "if(c5 !='null',c5,''), if(c6 !='null',c6,''),"
+            + "if(c7 !='null',c7,''), if(c8 !='null',c8,''),"
+            + "if(c9 !='null',c9,''), if(c10 !='null',c10,''),"
+            + "if(c11 !='null',c11,''), if(c12 !='null',c12,'')"
+            + "FROM profesores "
+            + "WHERE dni_pro="+dnipro);
+    while (rs.next()){
 
       out.write("\n");
-      out.write("                            <tbody>\n");
-      out.write("                                <tr>\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">");
+      out.write("                        <tbody>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">");
       out.print(rs.getString(1));
       out.write("</td>\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">");
       out.print(rs.getString(3));
       out.write(' ');
       out.print(rs.getString(2));
       out.write("</td>\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">");
       out.print(rs.getString(9));
       out.write("</td>\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">");
       out.print(rs.getString(8));
       out.write("</td>\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">\n");
-      out.write("                                        <a href=\"#\" style=\"text-decoration: none; color: #000;\"><i class=\"material-icons\">edit</i></a>\n");
-      out.write("                                        <a href=\"#\" style=\"text-decoration: none; color: #000;\"><i class=\"material-icons\">highlight_off</i></a>\n");
-      out.write("                                    </td>\n");
-      out.write("                                </tr>\n");
-      out.write("                                <tr class=\"\">\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\" title=\"Cursos de referencia\"><i class=\"material-icons\">import_contacts</i>\n");
-      out.write("                                    </td>\n");
-      out.write("                                    <td colspan=\"4\" class=\"\" title=\"Cursos de referencia\" style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">\n");
-      out.write("                                        <ul style=\"list-style-type: none; padding: 0px 0px;color: #0069B4\">\n");
-      out.write("                                           <li>");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">\n");
+      out.write("                                    <a href=\"#\" style=\"text-decoration: none; color: #000;\"><i class=\"material-icons\">edit</i></a>\n");
+      out.write("                                    <a href=\"#\" style=\"text-decoration: none; color: #000;\"><i class=\"material-icons\">highlight_off</i></a>\n");
+      out.write("                                </td>\n");
+      out.write("                            </tr>\n");
+      out.write("                            <tr class=\"\">\n");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\" title=\"Cursos de referencia\"><i class=\"material-icons\">import_contacts</i>\n");
+      out.write("                                </td>\n");
+      out.write("                                <td colspan=\"4\" class=\"\" title=\"Cursos de referencia\" style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\">\n");
+      out.write("                                    <ul style=\"list-style-type: none; padding: 0px 0px;color: #0069B4\">\n");
+      out.write("                                       <li>");
       out.print(rs.getString(16));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(17));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(18));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(19));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(20));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(21));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(22));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(23));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(24));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(25));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(26));
       out.write("</li>\n");
-      out.write("                                           <li>");
+      out.write("                                       <li>");
       out.print(rs.getString(27));
       out.write("</li>\n");
-      out.write("                                        </ul>\n");
-      out.write("                                    </td>\n");
-      out.write("                                </tr>\n");
-      out.write("                                <tr>\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\" title=\"Especialidad\"><i class=\"material-icons\">school</i></td>\n");
-      out.write("                                    <td style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" colspan=\"4\" class=\"\" title=\"Especialidad\">");
+      out.write("                                    </ul>\n");
+      out.write("                                </td>\n");
+      out.write("                            </tr>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\" title=\"Especialidad\"><i class=\"material-icons\">school</i></td>\n");
+      out.write("                                <td style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" colspan=\"4\" class=\"\" title=\"Especialidad\">");
       out.print(rs.getString(12));
       out.write("</td>\n");
-      out.write("                                </tr>\n");
-      out.write("                                <tr class=\"\">\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\" title=\"Experiencia\"><i class=\"material-icons\">school</i></td>\n");
-      out.write("                                    <td style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" colspan=\"4\" class=\"\" title=\"Experiencia\">");
+      out.write("                            </tr>\n");
+      out.write("                            <tr class=\"\">\n");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\" title=\"Experiencia\"><i class=\"material-icons\">school</i></td>\n");
+      out.write("                                <td style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" colspan=\"4\" class=\"\" title=\"Experiencia\">");
       out.print(rs.getString(14));
       out.write("</td>\n");
-      out.write("                                </tr>\n");
-      out.write("                                <tr class=\"\">\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\"><i class=\"material-icons\">phone</i></td>\n");
-      out.write("                                    <td style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" colspan=\"4\" class=\"\">");
+      out.write("                            </tr>\n");
+      out.write("                            <tr class=\"\">\n");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\"><i class=\"material-icons\">phone</i></td>\n");
+      out.write("                                <td style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" colspan=\"4\" class=\"\">");
       out.print(rs.getString(4));
       out.write(" - ");
       out.print(rs.getString(6));
       out.write("</td>\n");
-      out.write("                                </tr>\n");
-      out.write("                                <tr class=\"\">\n");
-      out.write("                                    <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\"><i class=\"material-icons\">location_on</i></td>\n");
-      out.write("                                    <td style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" colspan=\"4\" class=\"\">");
+      out.write("                            </tr>\n");
+      out.write("                            <tr class=\"\">\n");
+      out.write("                                <td style=\"text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" class=\"\"><i class=\"material-icons\">location_on</i></td>\n");
+      out.write("                                <td style=\"padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;\" colspan=\"4\" class=\"\">");
       out.print(rs.getString(5));
       out.write("\n");
-      out.write("                                </tr>\n");
-      out.write("                            </tbody>\n");
+      out.write("                            </tr>\n");
+      out.write("                        </tbody>\n");
  
-    }
+}
 sta.close();
 rs.close();
 cnx.close();
-    } catch (Exception e) {
-           }
+} catch (Exception e) {
+       }
 
       out.write("\n");
-      out.write("                        </table>\n");
-      out.write("                    </div> \n");
-      out.write("                </div>\n");
+      out.write("                    </table>\n");
+      out.write("                </div> \n");
       out.write("            </div>\n");
-      out.write("                            <a class=\"popup-cerrar2\" href=\"#\" title=\"Cerrar\" onclick = \"document.getElementById('light2').style.display='none';\">x</a>\n");
       out.write("        </div>\n");
+      out.write("                        <a class=\"popup-cerrar2\" href=\"#\" title=\"Cerrar\" onclick = \"document.getElementById('light2').style.display='none';\">x</a>\n");
+      out.write("    </div>\n");
       out.write("</div>                            \n");
       out.write("    \n");
       out.write("<script type=\"text/javascript\">\n");
@@ -853,6 +828,13 @@ cnx.close();
       out.write("}\n");
       out.write("    } );\n");
       out.write("} );\n");
+      out.write("</script>\n");
+      out.write("\n");
+      out.write("<script type=\"text/javascript\">\n");
+      out.write("    function showMe (it, box) {\n");
+      out.write("    var vis = (box.checked) ? \"block\" : \"none\";\n");
+      out.write("    document.getElementById(it).style.display = vis;\n");
+      out.write("    }\n");
       out.write("</script>\n");
       out.write("               \n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js\"></script>\n");
