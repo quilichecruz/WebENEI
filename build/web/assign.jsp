@@ -179,7 +179,8 @@
                 + "c12 like '"+nombrecur+"'");
         while (rs.next()){
 %>
-<ul class="list-group" >
+
+<ul class="list-group" style=" max-height: 30px;">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     <%=rs.getString(2)%> <%=rs.getString(1)%>
     <span class="badge badge-primary badge-pill"><%=rs.getString(3)%></span>
@@ -196,10 +197,10 @@ cnx.close();
     } catch (Exception e) {
            }
 %>   
-                            
+       
                         </div>
 
-<div class="col-md-3">
+            <div class="col-md-3">
 <%
     try {
         Class.forName("com.mysql.jdbc.Driver");
@@ -214,7 +215,7 @@ cnx.close();
                 + " where dni_pro="+dnipro);
         while (rs.next()){
 %>
-<ul class="list-group">
+<ul class="list-group" style="max-height: 30px;">
   <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(1)%>
     <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
   </li>
