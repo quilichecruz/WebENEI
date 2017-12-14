@@ -97,7 +97,7 @@ try {
                             
                     <div class="col-md-3">
                         <a style="text-decoration: none;color: #000;font-size: 13px;" href="#popup" class="popup-link" onclick = "document.getElementById('light').style.display='block';">
-                            <i class="material-icons" style="text-decoration: none;color: #000;">accessibility</i> Agregar docente</a>
+                            <i class="material-icons" style="text-decoration: none;color: #000;">account_circle</i></a>
                     </div>
             </div>
             <!--Contenido-->
@@ -265,10 +265,7 @@ cnx.close();
                         </div>
                     </div> 
                 </div>
-                </div>    
-
-            
-            
+                </div>
             <!--Footer-->
             <div class="row">
                 <div class="col">
@@ -278,7 +275,83 @@ cnx.close();
         </div>
     </div>
     
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <br>
+                <div class="container">
+                <!--Menú-->
+                    <div class="row">
+                        <div class="col-md-3">
+                        <a style="text-decoration: none;color: #000;font-size: 13px;" href="#popup4" class="popup-link" onclick = "document.getElementById('light4').style.display='block';">
+                            <i class="material-icons" style="text-decoration: none;color: #000;">description</i></a>
+                    </div>
+                       
+                </div>
+                <!--Contenido-->
+                    <div class="row">
+                         <div class="col-md-12">
+                            <div class="col-md-12" style="margin-top: 3%;">
+                        <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
+                        <!--<table class="table table-hover">-->
+                        <table id="example2" class="display" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th></th>                                 
+                                    <th style="text-align: center">Curso</th>
+                                    <th style="text-align: center">Vacantes</th>
+                                    <th style="text-align: center">Costo</th>
+                                    <th style="text-align: center">Opción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+<%
+    try {
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("select * from cursos");
+    while (rs.next()){
+%>
+                                <tr>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 18px">description</i></a></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><%=rs.getString(2)%></a></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
+                                        <a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';">
+                                            <i class="material-icons" style="font-size: 18px">toc</i></a>
+                                        <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
+                                            <i class="material-icons" style="font-size: 18px;">edit</i></a>
+                                        <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
+                                            <i class="material-icons" style="font-size: 18px">highlight_off</i></a>
+                                    </td>
+                                </tr>                      
+<% 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
+    } catch (Exception e) {
+    }
+%>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                        </div>
+                    </div>       
+                <!--Footer-->
+                    <div class="row">
+                        <div class="col-md-12">
+                        </div>
+                    
+                    </div>       
+                </div>
+
+
+
+
+
+            </div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
 
@@ -289,37 +362,37 @@ cnx.close();
                 <form action="docentes_admin" name="holapro">
                     <div class="row">
                         <div class="col-md-2 mb-2">
-                            <input type="text" name="dnipro" placeholder="DNI" required maxlength="12" style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3">
+                            <input type="text" name="dnipro" placeholder="DNI" required maxlength="12" style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF;">
                         </div>
                         <div class="col-md-4 mb-2">
-                            <input type="text" name="nombrepro" placeholder="Nombre" required style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3">
+                            <input type="text" name="nombrepro" placeholder="Nombre" required style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF">
                         </div>
                         <div class="col-md-6 mb-2">
-                            <input type="text" name="apellidospro" placeholder="Apellidos" required style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3">
+                            <input type="text" name="apellidospro" placeholder="Apellidos" required style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF">
                         </div>
                         <div class="col-md-2 mb-2">
-                            <input type="text" name="sede" placeholder="Sede"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3">
+                            <input type="text" name="sede" placeholder="Sede"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF">
                         </div>
                         <div class="col-md-10 mb-2">
-                            <input type="text" name="dire" placeholder="Dirección"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3">
+                            <input type="text" name="dire" placeholder="Dirección"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF">
                         </div>
                         <div class="col-md-6 mb-2">
-                            <input type="text" name="tele" placeholder="Teléfono"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3">
+                            <input type="text" name="tele" placeholder="Teléfono"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF">
                         </div>
                         <div class="col-md-6 mb-2">
-                            <input type="text" name="corr" placeholder="Email"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3">
+                            <input type="text" name="corr" placeholder="Email"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF">
                         </div>
                         <div class="col-md-8 mb-2">
-                            <input type="text" name="prof" placeholder="Profesión"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3">
+                            <input type="text" name="prof" placeholder="Profesión"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF">
                         </div>
                         <div class="col-md-4 mb-2">
                             <input type="text" name="grad" placeholder="Grado"  style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3">
                         </div>
                         <div class="col-md-12 mb-2">
-                            <textarea name="espe" style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3" placeholder="Especialidad"></textarea>
+                            <textarea name="espe" style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF" placeholder="Especialidad"></textarea>
                         </div>
                         <div class="col-md-12 mb-2">
-                            <textarea name="expe" style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #2196F3" placeholder="Experiencia"></textarea>
+                            <textarea name="expe" style="width: 100%;padding-left: 3px;font-size: 13px;outline-color: #007AFF" placeholder="Experiencia"></textarea>
                         </div>
         
                         <label style="width: 100%;font-size: 10px;margin-left: 15px;">Agregar cursos de referencia + 
@@ -573,7 +646,7 @@ cnx.close();
                         %>  
                         </select>
 
-                        <button onclick="return registrar()" style="margin-top: 10px;margin-left: 92%;color: #fafafa;background: #0069B4;border: 0px;padding: 10px 10px 10px 10px;font-size: 10px;">Registrar</button>
+                        <button onclick="return registrar()" style="margin-top: 10px;margin-left: 92%;color: #fafafa;background: #007AFF;border: 0px;border-radius: 3px;padding: 10px 10px 10px 10px;font-size: 10px;">GRABAR</button>
                     </div>  
                 </form>
             </div>
@@ -678,7 +751,36 @@ cnx.close();
     </div>
 </div>
 
-    
+<div class="modal-wrapper" id="popup4">
+    <div style="position: relative;margin:10% auto;padding:30px 30px;background-color: #fafafa;color:#333;border-radius: 3px;width:80%;">
+        <div class="row" id="light4" style="display: none;">
+            <div class="col-md-12">
+                <form action="docentes_admin" name="holapro">
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <input type="text" name="" placeholder="Curso" required  style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF;">
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <input type="number" name="" placeholder="Vacantes" required style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF">
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <input type="text" name="" placeholder="Costo S/." required style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF">
+                        </div>
+                       
+                        <div class="col-md-8 mb-2">
+                            <textarea name="" style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF" placeholder="Descripción"></textarea>
+                        </div>
+        
+
+                        <button onclick="return registrar()" style="margin-top: 10px;margin-left: 92%;color: #fafafa;background: #007AFF;border: 0px;border-radius: 3px;padding: 10px 10px 10px 10px;font-size: 10px;">GRABAR</button>
+                    </div>  
+                </form>
+            </div>
+        </div>
+                        <a class="popup-cerrar4" href="#" title="Cerrar" onclick = "document.getElementById('light4').style.display='none';">x</a>
+    </div>
+</div> 
+                    
 <script type="text/javascript">
     $(document).ready(function() {
     $('#example').DataTable({
@@ -713,6 +815,37 @@ cnx.close();
 <script type="text/javascript">
     $(document).ready(function() {
     $('#example1').DataTable({
+        "language": {
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
+}
+    } );
+} );
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#example2').DataTable({
         "language": {
     "sProcessing":     "Procesando...",
     "sLengthMenu":     "Mostrar _MENU_ registros",

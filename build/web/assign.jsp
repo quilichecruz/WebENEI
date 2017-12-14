@@ -39,16 +39,13 @@
     <body style="font-size: 11px;">
         <nav class="nav nav-tabs" id="myTab">
             <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-report" role="tab" aria-controls="nav-report" aria-selected="false" style="color: #000;font-size: 13px;"><img src="media/logo.png" alt="" style="width: 45px;height: auto;text-align: center;"></a>
-            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="color: #000;font-size: 13px;font-weight: 600;"><i class="material-icons" style="font-size: 18px">school</i> Docentes</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" style="color: #000;font-size: 13px;font-weight: 600;"><i class="material-icons" style="font-size: 18px">local_library</i> Cursos</a>
-            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" style="color: #000;font-size: 13px;font-weight: 600;"><i class="material-icons" style="font-size: 18px">dashboard</i> Reportes</a>
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <br>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <form class="form-horizontal">
                             <fieldset>
                                 <legend></legend>
@@ -84,13 +81,13 @@
                                         <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                         <div class="col-md-8">
                                             <select id="selectbasic" name="selectbasic" class="form-control" style="font-size: 12px;" required>
-                                                <%--<option value="<%=codcur%>"><%=nombrecur%></option>--%>
+                                                <option value="<%=codcur%>"><%=nombrecur%></option>
             <%
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
                     cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
                     sta=cnx.createStatement();
-                    rs=sta.executeQuery("select * from cursos order by cod_cur");
+                    rs=sta.executeQuery("select * from cursos order by nombre_cur");
                     while (rs.next()){
             %>
                                                 <option value="<%=rs.getInt(1)%>"><%=rs.getString(2)%></option>
@@ -161,13 +158,115 @@
                             </fieldset>
                         </form>
                         </div>
-                        <div class="col-md-6">
+            <div class="col-md-4">
+<%
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+        sta=cnx.createStatement();
+        rs=sta.executeQuery("select nombre_pro, apellidos_pro, prof_pro, sede_pro from profesores "
+                + "where c1 like '"+nombrecur+"' or "
+                + "c2 like '"+nombrecur+"' or "
+                + "c3 like '"+nombrecur+"' or "
+                + "c4 like '"+nombrecur+"' or "
+                + "c5 like '"+nombrecur+"' or "
+                + "c6 like '"+nombrecur+"' or "
+                + "c7 like '"+nombrecur+"' or "
+                + "c8 like '"+nombrecur+"' or "
+                + "c9 like '"+nombrecur+"' or "
+                + "c10 like '"+nombrecur+"' or "
+                + "c11 like '"+nombrecur+"' or "
+                + "c12 like '"+nombrecur+"'");
+        while (rs.next()){
+%>
+<ul class="list-group" >
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <%=rs.getString(2)%> <%=rs.getString(1)%>
+    <span class="badge badge-primary badge-pill"><%=rs.getString(3)%></span>
+    <span class="badge badge-primary badge-pill"><%=rs.getString(4)%></span>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+</ul>
+
+<% 
+}
+sta.close();
+rs.close();
+cnx.close();
+    } catch (Exception e) {
+           }
+%>   
+                            
                         </div>
+
+<div class="col-md-3">
+<%
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+        sta=cnx.createStatement();
+        rs=sta.executeQuery("select if(c1 !='null',c1,''), if(c2 !='null',c2,''),"
+                    + "if(c3 !='null',c3,''), if(c4 !='null',c4,''),"
+                    + "if(c5 !='null',c5,''), if(c6 !='null',c6,''),"
+                    + "if(c7 !='null',c7,''), if(c8 !='null',c8,''),"
+                    + "if(c9 !='null',c9,''), if(c10 !='null',c10,''),"
+                    + "if(c11 !='null',c11,''), if(c12 !='null',c12,'') from profesores"
+                + " where dni_pro="+dnipro);
+        while (rs.next()){
+%>
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(1)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(2)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(3)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(4)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(5)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(6)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(7)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(8)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(10)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(11)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(12)%>
+    <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
+  </li>
+</ul>
+
+<% 
+}
+sta.close();
+rs.close();
+cnx.close();
+    } catch (Exception e) {
+           }
+%>   
+                            
+                        </div>
+
+
                     </div>
                 </div>
             
                 <div class="col-md-12">
-                    <a href="inicio.jsp?dnipro=<%=dnipro%>" style="color: #000;text-decoration: none;"><i class="material-icons" style="margin-left: 90%;font-size: 30px;">arrow_back</i>inicio</a>
+                    <a href="inicio.jsp?dnipro=<%=dnipro%>" style="color: #000;text-decoration: none;"><i class="material-icons" style="margin-left: 90%;font-size: 30px;">arrow_back</i></a>
                 </div>
             </div>                           
         </div>
