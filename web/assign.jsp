@@ -46,14 +46,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5">
-                            <form class="form-horizontal">
+                            <form action="relacion_admin" method="post" class="form-horizontal" >
                             <fieldset>
                                 <legend></legend>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="selectbasic">Docente</label>
                                         <div class="col-md-8">
-                                            <select id="selectbasic" name="selectbasic" class="form-control" style="font-size: 12px;" required>
-                                                <option value="<%=dnipro%>"><%=apellidospro%> <%=nombrepro%></option>  
+                                            <select id="selectbasic" name="dnipro" class="form-control" style="font-size: 12px;" required>
+                                                <option value="<%=dnipro%>"><%=dnipro%> <%=apellidospro%> <%=nombrepro%></option>  
             <%
                     Connection cnx=null;
                     Statement sta=null;
@@ -80,7 +80,7 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="selectbasic">Curso</label>
                                         <div class="col-md-8">
-                                            <select id="selectbasic" name="selectbasic" class="form-control" style="font-size: 12px;" required>
+                                            <select id="selectbasic" name="codcur" class="form-control" style="font-size: 12px;" required>
                                                 <option value="<%=codcur%>"><%=nombrecur%></option>
             <%
                 try {
@@ -105,25 +105,25 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="textinput">Frecuencia</label>  
                                         <div class="col-md-8">
-                                            <input id="textinput" name="textinput" type="text" class="form-control input-md" style="font-size: 12px;">
+                                            <input id="textinput" name="frec" type="text" class="form-control input-md" style="font-size: 12px;">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="textinput">Fecha de inicio</label>  
                                         <div class="col-md-4">
-                                            <input id="textinput" name="textinput" type="text" class="form-control input-md campomyfecha" style="font-size: 12px;" required>
+                                            <input id="textinput" name="fechatini" type="text" class="form-control input-md campomyfecha" style="font-size: 12px;" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="textinput">Fecha término</label>  
                                         <div class="col-md-4">
-                                            <input id="textinput" name="textinput" type="text" class="form-control input-md campomyfecha" style="font-size: 12px;" required>
+                                            <input id="textinput" name="fechatfin" type="text" class="form-control input-md campomyfecha" style="font-size: 12px;" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="selectbasic">Estado</label>
                                         <div class="col-md-4">
-                                            <select id="selectbasic" name="selectbasic" class="form-control" style="font-size: 12px;">
+                                            <select id="selectbasic" name="esta" class="form-control" style="font-size: 12px;">
                                                 <option value="Por Iniciar">Por Iniciar</option>
                                                 <option value="En Ejecucion">En Ejecución</option>
                                                 <option value="Finalizo">Finalizó</option>
@@ -133,7 +133,7 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="selectbasic">Laboratorio</label>
                                         <div class="col-md-4">
-                                            <select id="selectbasic" name="selectbasic" class="form-control" style="font-size: 12px;">
+                                            <select id="selectbasic" name="labo" class="form-control" style="font-size: 12px;">
                                                 <option value="Sin Asignar">Sin Asignar</option>
                                                 <option value="Lab 01">LAB 01</option>
                                                 <option value="Lab 02">LAB 02</option>
@@ -146,7 +146,7 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="textinput">Inscritos</label>  
                                         <div class="col-md-4">
-                                            <input id="textinput" name="textinput" type="number" class="form-control input-md" value="0" style="font-size: 12px;">
+                                            <input id="textinput" name="paga" type="number" class="form-control input-md" value="0" style="font-size: 12px;">
                                       </div>
                                     </div>
                                     <div class="form-group">
@@ -215,7 +215,7 @@ cnx.close();
                 + " where dni_pro="+dnipro);
         while (rs.next()){
 %>
-<ul class="list-group" style="max-height: 30px;">
+<ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center"><%=rs.getString(1)%>
     <span class="badge badge-primary badge-pill list-group-item-danger">R</span>
   </li>

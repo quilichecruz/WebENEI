@@ -8,19 +8,16 @@ package Servlet;
 import MySQL.Consultas;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
-import java.net.InetAddress;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author prac-enei5
  */
-public class session_admin extends HttpServlet {
+public class cursos_admin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,6 +31,22 @@ public class session_admin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String nombrecur = request.getParameter("nombrecur");
+        int vaca = Integer.parseInt(request.getParameter("vaca"));
+        float cost = Float.parseFloat(request.getParameter("cost"));
+        String desc = request.getParameter("desc");
+        
+        Consultas co = new Consultas();
+        if(co.registro_cursos(nombrecur,vaca,cost,desc)){
+        request.setAttribute("nombrecur", nombrecur);     
+        request.setAttribute("vaca", vaca);
+        request.setAttribute("cost", cost);
+        request.setAttribute("desc", desc);     
+        
+        response.sendRedirect("inicio.jsp");
+        }else{
+        response.sendRedirect("inicio.jsp");
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,32 +76,6 @@ public class session_admin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        /*variables de incio de sesion*/
-        String user_admin=request.getParameter("user_admin");  
-        String pass_admin=request.getParameter("pass_admin");
-                
-        /*variables de sesion*/
-        InetAddress addr = InetAddress.getLocalHost();
-        String hostname = addr.getHostName();
-        String ip = addr.getHostAddress();
-        request.getParameter("hostname");
-        request.getParameter("ip");
-        
-        Consultas co = new Consultas(); 
-        
-        if(co.autentication_user(user_admin, pass_admin)){
-           HttpSession session=request.getSession(); 
-           session.setAttribute("user_admin",user_admin);  
-           session.setAttribute("pass_admin",pass_admin);  
-           session.setAttribute("hostname",hostname);
-           session.setAttribute("ip",ip); 
-           response.sendRedirect("inicio.jsp");
-        }
-        else{  
-            response.sendRedirect("login.jsp");
-        }
-        out.close();
     }
 
     /**

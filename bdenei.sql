@@ -51,6 +51,29 @@ cost float(10) NULL,
 desc_cur varchar(400) NULL,
 PRIMARY KEY  (cod_cur));
 
+create table registro(
+id_registro int(10) auto_increment NOT NULL,
+dni_pro varchar(10) NOT NULL,
+cod_cur int(10) NOT NULL,
+fechatini varchar(50) NOT NULL,
+fechatfin varchar(50) NOT NULL,
+esta varchar(50) NOT NULL,
+labo varchar(50) NULL,
+paga int(10) NULL,
+frec varchar(100) NULL,
+PRIMARY KEY  (id_registro));
+ALTER TABLE registro ADD FOREIGN KEY(dni_pro) REFERENCES profesores(dni_pro);
+ALTER TABLE registro ADD FOREIGN KEY(cod_cur) REFERENCES cursos(cod_cur);
+
+create table sesion(
+id_sesion int(10) auto_increment NOT NULL,
+id_registro int(10) NOT NULL,
+fecha varchar(15) NOT NULL,
+horasini varchar(15) NOT NULL,
+horasfin varchar(15) NOT NULL,
+PRIMARY KEY  (id_sesion));
+ALTER TABLE sesion ADD FOREIGN KEY(id_registro) REFERENCES registro(id_registro);
+
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Administración de Proyectos con MS Project',50,350,'');
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Elaboración de Balanced Scorecard en EXCEL',50,350,'');
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Macros en Excel para el Análisis de la Información Estadística ',50,350,'');

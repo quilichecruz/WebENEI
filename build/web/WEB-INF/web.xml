@@ -12,6 +12,18 @@
         <servlet-name>docentes_admin</servlet-name>
         <servlet-class>Servlet.docentes_admin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cursos_admin</servlet-name>
+        <servlet-class>Servlet.cursos_admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>relacion_admin</servlet-name>
+        <servlet-class>Servlet.relacion_admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>clases_admin</servlet-name>
+        <servlet-class>Servlet.clases_admin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>session_admin</servlet-name>
         <url-pattern>/session_admin</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>docentes_admin</servlet-name>
         <url-pattern>/docentes_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cursos_admin</servlet-name>
+        <url-pattern>/cursos_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>relacion_admin</servlet-name>
+        <url-pattern>/relacion_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>clases_admin</servlet-name>
+        <url-pattern>/clases_admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

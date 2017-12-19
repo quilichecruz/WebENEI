@@ -40,7 +40,7 @@
         <div class="container">
             <!--Menu-->
             <div class="row">
-                    <div class="col-md-3">
+                    <%--<div class="col-md-3">
                         <form>
                             <select style="font-size: 12px;width: 70%">
                                 <option>Docentes con cursos</option>
@@ -93,7 +93,7 @@ try {
                             </select>
                             <button style="background: transparent;border: 0px;"><i class="material-icons" style="font-size: 18px;">search</i></button>
                         </form>
-                    </div>
+                    </div>--%>
                             
                     <div class="col-md-3">
                         <a style="text-decoration: none;color: #000;font-size: 13px;" href="#popup" class="popup-link" onclick = "document.getElementById('light').style.display='block';">
@@ -168,6 +168,9 @@ try {
                             </thead>
                             <tbody>
 <%
+    Connection cnx=null;
+    Statement sta=null;
+    ResultSet rs=null;
     try {
     Class.forName("com.mysql.jdbc.Driver");
     cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
@@ -176,18 +179,18 @@ try {
     while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?dnipro=<%=rs.getString(1)%>&nombrepro=<%=rs.getString(2)%>&apellidospro=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 18px">account_circle</i></a></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?dnipro=<%=rs.getString(1)%>&nombrepro=<%=rs.getString(2)%>&apellidospro=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 15px">account_circle</i></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';"><%=rs.getString(3)%>, <%=rs.getString(2)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(15)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(9)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(8)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
                                         <a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';">
-                                            <i class="material-icons" style="font-size: 18px">toc</i></a>
+                                            <i class="material-icons" style="font-size: 15px">portrait</i></a>
                                         <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
-                                            <i class="material-icons" style="font-size: 18px;">edit</i></a>
+                                            <i class="material-icons" style="font-size: 15px;">edit</i></a>
                                         <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
-                                            <i class="material-icons" style="font-size: 18px">highlight_off</i></a>
+                                            <i class="material-icons" style="font-size: 15px">highlight_off</i></a>
                                     </td>
                                 </tr>                      
 <% 
@@ -205,12 +208,12 @@ try {
                 </div>
                             
                 <div class="col-md-12">
-                    <div class="col-md-12" style="margin-top: 3%;">
+                    <div class="col-md-12" style="margin-top: 5%;">
                         <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
                         <table id="example1" class="display" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th></th>                                        
+                                    <th><a href="assign.jsp?dnipro=<%=dnipro%>"><i class="material-icons" style="color: #000">account_circle</i></a></th>                                        
                                     <th style="text-align: center">Curso</th>
                                     <th style="text-align: center">Inscritos</th>
                                     <th style="text-align: center">Vacantes</th>
@@ -233,23 +236,23 @@ try {
         while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a><i class="material-icons" style="font-size: 18px">import_contacts</i></a></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a><i class="material-icons" style="font-size: 15px">description</i></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getInt(4)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getInt(12)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getInt(13)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(14)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(8)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(9)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(10)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(11)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(4)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(13)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;font-size: 10px"><%=rs.getString(14)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
                                     <td>
+                                        <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
+                                            <i class="material-icons" style="font-size: 15px; color: #000">timer</i></a>
                                         <a href="editarrela.jsp?id=<%=rs.getString(1)%>">
-                                        </a>   
-                                        <a href="sesion.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
-                                        </a>
+                                            <i class="material-icons" style="font-size: 15px; color: #000">edit</i></a>
                                         <a href="eliminarrela.jsp?id=<%=rs.getString(1)%>" onclick="return eliminar()">
-                                        </a>
+                                            <i class="material-icons" style="font-size: 15px;color: #000">highlight_off</i></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -312,17 +315,17 @@ cnx.close();
     while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 18px">description</i></a></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 15px">description</i></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><%=rs.getString(2)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
                                         <a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';">
-                                            <i class="material-icons" style="font-size: 18px">toc</i></a>
+                                            <i class="material-icons" style="font-size: 15px">toc</i></a>
                                         <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
-                                            <i class="material-icons" style="font-size: 18px;">edit</i></a>
+                                            <i class="material-icons" style="font-size: 15px;">edit</i></a>
                                         <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
-                                            <i class="material-icons" style="font-size: 18px">highlight_off</i></a>
+                                            <i class="material-icons" style="font-size: 15px">highlight_off</i></a>
                                     </td>
                                 </tr>                      
 <% 
@@ -755,20 +758,20 @@ cnx.close();
     <div style="position: relative;margin:10% auto;padding:30px 30px;background-color: #fafafa;color:#333;border-radius: 3px;width:80%;">
         <div class="row" id="light4" style="display: none;">
             <div class="col-md-12">
-                <form action="docentes_admin" name="holapro">
+                <form action="cursos_admin" name="holapro">
                     <div class="row">
                         <div class="col-md-12 mb-2">
-                            <input type="text" name="" placeholder="Curso" required  style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF;">
+                            <input type="text" name="nombrecur" placeholder="Curso" required  style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF;">
                         </div>
                         <div class="col-md-2 mb-2">
-                            <input type="number" name="" placeholder="Vacantes" required style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF">
+                            <input type="number" name="vaca" placeholder="Vacantes" required style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF">
                         </div>
                         <div class="col-md-2 mb-2">
-                            <input type="text" name="" placeholder="Costo S/." required style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF">
+                            <input type="text" name="cost" placeholder="Costo S/." required style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF">
                         </div>
                        
                         <div class="col-md-8 mb-2">
-                            <textarea name="" style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF" placeholder="Descripción"></textarea>
+                            <textarea name="desc" style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF" placeholder="Descripción"></textarea>
                         </div>
         
 

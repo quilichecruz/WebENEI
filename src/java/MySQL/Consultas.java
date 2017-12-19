@@ -37,7 +37,7 @@ public class Consultas extends Conexion{
         return false;
     }
     
-        public boolean registro_docente(String dni,String nombre,String apellidos,String tele,String dire,String corr,String cpre,String grad,String prof,String tipo,String cpos,String espe,String dipl,String expe,String sede,String c1,String c2,String c3,String c4,String c5,String c6,String c7,String c8,String c9,String c10,String c11,String c12){ 
+    public boolean registro_docente(String dni,String nombre,String apellidos,String tele,String dire,String corr,String cpre,String grad,String prof,String tipo,String cpos,String espe,String dipl,String expe,String sede,String c1,String c2,String c3,String c4,String c5,String c6,String c7,String c8,String c9,String c10,String c11,String c12){ 
         
         PreparedStatement pst = null;
         
@@ -88,6 +88,94 @@ public class Consultas extends Conexion{
         return false;
     }
 
+    public boolean registro_cursos(String nombrecur,int vaca,float cost,String desc){ 
+
+    PreparedStatement pst = null;
+
+    try {
+        String consulta="insert into cursos(nombre_cur,vaca_cur,cost,desc_cur) values(?,?,?,?)";
+        pst = getConexion().prepareStatement(consulta);
+        pst.setString(1, nombrecur);
+        pst.setInt(2, vaca);
+        pst.setFloat(3, cost);
+        pst.setString(4, desc);
+        if(pst.executeUpdate() == 1){
+        return true;
+        }
+    } catch (Exception ex) {
+        System.err.println("ERROR"+ ex);
+    }finally{
+        try {
+             if (getConexion() != null) getConexion().close();
+             if (pst != null) pst.close();
+            } catch (Exception e) {
+        System.err.println("ERROR"+ e);
+    }
+  }
+    return false;
+}
+
+    public boolean relation(String dni,int cod,String fechatini,String fechatfin,String esta,String labo,int paga,String frec){ 
+
+    PreparedStatement pst = null;
+
+    try {
+        String consulta="insert into registro(dni_pro,cod_cur,fechatini,fechatfin,esta,labo,paga,frec) values(?,?,?,?,?,?,?,?)";
+        pst = getConexion().prepareStatement(consulta);
+
+        pst.setString(1, dni);
+        pst.setInt(2, cod);
+        pst.setString(3, fechatini);
+        pst.setString(4, fechatfin);
+        pst.setString(5, esta);
+        pst.setString(6, labo);
+        pst.setInt(7, paga);
+        pst.setString(8, frec);
+
+        if(pst.executeUpdate() == 1){
+        return true;
+        }
+    } catch (Exception ex) {
+        System.err.println("ERROR"+ ex);
+    }finally{
+        try {
+             if (getConexion() != null) getConexion().close();
+             if (pst != null) pst.close();
+            } catch (Exception e) {
+        System.err.println("ERROR"+ e);
+    }
+  }
+    return false;
+}
+
+    public boolean session(int idregistro,String fechas,String horasini,String horasfin){ 
+
+       PreparedStatement pst = null;
+
+       try {
+           String consulta="insert into sesion(id_registro,fecha,horasini,horasfin) values(?,?,?,?)";
+           pst = getConexion().prepareStatement(consulta);
+
+           pst.setInt(1, idregistro);
+           pst.setString(2, fechas);
+           pst.setString(3, horasini);
+           pst.setString(4, horasfin);
+           if(pst.executeUpdate() == 1){
+           return true;
+           }
+       } catch (Exception ex) {
+           System.err.println("ERROR"+ ex);
+       }finally{
+           try {
+                if (getConexion() != null) getConexion().close();
+                if (pst != null) pst.close();
+               } catch (Exception e) {
+           System.err.println("ERROR"+ e);
+       }
+     }
+       return false;
+   }
+    
     
     
 }

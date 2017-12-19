@@ -8,19 +8,16 @@ package Servlet;
 import MySQL.Consultas;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
-import java.net.InetAddress;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author prac-enei5
  */
-public class session_admin extends HttpServlet {
+public class clases_admin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,6 +31,7 @@ public class session_admin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,32 +61,30 @@ public class session_admin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        int id = Integer.parseInt(request.getParameter("id"));
+        String fechas = request.getParameter("fechas");
+        String dnipro = request.getParameter("dnipro");
+        String horasini = request.getParameter("horasini");
+        String horasfin = request.getParameter("horasfin");
+
+        Consultas co = new Consultas();
+        if(co.session(id,fechas,horasini,horasfin)){
         
-        /*variables de incio de sesion*/
-        String user_admin=request.getParameter("user_admin");  
-        String pass_admin=request.getParameter("pass_admin");
-                
-        /*variables de sesion*/
-        InetAddress addr = InetAddress.getLocalHost();
-        String hostname = addr.getHostName();
-        String ip = addr.getHostAddress();
-        request.getParameter("hostname");
-        request.getParameter("ip");
+        request.setAttribute("id", id);
+        request.setAttribute("fechas", fechas);
+        request.setAttribute("dnipro", dnipro);
+        request.setAttribute("horasini", horasini);
+        request.setAttribute("horasfin", horasfin);
         
-        Consultas co = new Consultas(); 
+        response.sendRedirect("session.jsp?id="+id+"&dnipro="+dnipro);
+
+        }else{
+        response.sendRedirect("session.jsp");
+        }        
         
-        if(co.autentication_user(user_admin, pass_admin)){
-           HttpSession session=request.getSession(); 
-           session.setAttribute("user_admin",user_admin);  
-           session.setAttribute("pass_admin",pass_admin);  
-           session.setAttribute("hostname",hostname);
-           session.setAttribute("ip",ip); 
-           response.sendRedirect("inicio.jsp");
-        }
-        else{  
-            response.sendRedirect("login.jsp");
-        }
-        out.close();
+        
+        
+        
     }
 
     /**
