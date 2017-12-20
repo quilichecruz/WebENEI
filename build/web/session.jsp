@@ -81,12 +81,12 @@
                         
                         <div class="col-md-7">
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table class="table table-hover table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Fecha</th>
-                                            <th>Hora</th>
-                                            <th>Opción</th>
+                                            <th style="text-align: center;background: #000;color: white">Fecha</th>
+                                            <th style="text-align: center;background: #000;color: white">Hora</th>
+                                            <th style="text-align: center;background: #000;color: white">Opción</th>
                                         </tr>
                                     </thead>                                   
                                     <tbody>
@@ -102,9 +102,9 @@
         while (rs.next()){
     %>
                                     <tr>    
-                                        <td><%=rs.getString(2)%></td>
-                                        <td><%=rs.getString(3)%> - <%=rs.getString(4)%></td>
-                                        <td>
+                                        <td style="text-align: center"><%=rs.getString(2)%></td>
+                                        <td style="text-align: center"><%=rs.getString(3)%> - <%=rs.getString(4)%></td>
+                                        <td style="text-align: center">
                                             <a href="#"><i class="material-icons" style="font-size: 15px; color: #000">edit</i></a>
                                             <a href="#"><i class="material-icons" style="font-size: 15px; color: #000">highlight_off</i></a>
                                         </td>

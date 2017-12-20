@@ -97,8 +97,9 @@ try {
                             
                     <div class="col-md-3">
                         <a style="text-decoration: none;color: #000;font-size: 13px;" href="#popup" class="popup-link" onclick = "document.getElementById('light').style.display='block';">
-                            <i class="material-icons" style="text-decoration: none;color: #000;">account_circle</i></a>
+                            <i data-toggle="tooltip" data-placement="right" title="Registrar" class="material-icons" style="text-decoration: none;color: #000;">account_circle</i></a>
                     </div>
+
             </div>
             <!--Contenido-->
             <div class="row">
@@ -155,7 +156,7 @@ try {
                     <div class="col-md-12" style="margin-top: 3%;">
                         <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
                         <!--<table class="table table-hover">-->
-                        <table id="example" class="display" cellspacing="0" width="100%">
+                        <table id="example" class="display" style="border: 1px solid #000;" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th></th>                                        
@@ -179,7 +180,7 @@ try {
     while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?dnipro=<%=rs.getString(1)%>&nombrepro=<%=rs.getString(2)%>&apellidospro=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 15px">account_circle</i></a></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?dnipro=<%=rs.getString(1)%>&nombrepro=<%=rs.getString(2)%>&apellidospro=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 15px;">account_circle</i></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';"><%=rs.getString(3)%>, <%=rs.getString(2)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(15)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(9)%></td>
@@ -210,7 +211,7 @@ try {
                 <div class="col-md-12">
                     <div class="col-md-12" style="margin-top: 5%;">
                         <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
-                        <table id="example1" class="display" cellspacing="0" width="100%">
+                        <table id="example1" class="display" style="border: 1px solid #000;" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th><a href="assign.jsp?dnipro=<%=dnipro%>"><i class="material-icons" style="color: #000">account_circle</i></a></th>                                        
@@ -236,16 +237,16 @@ try {
         while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a><i class="material-icons" style="font-size: 15px">description</i></a></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(4)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(13)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;font-size: 10px"><%=rs.getString(14)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="#" style="color: #000"><i class="material-icons" style="font-size: 15px">description</i></a></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(4)%></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(13)%></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center;font-size: 10px"><%=rs.getString(14)%></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
                                     <td>
                                         <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
                                             <i class="material-icons" style="font-size: 15px; color: #000">timer</i></a>
@@ -285,7 +286,7 @@ cnx.close();
                     <div class="row">
                         <div class="col-md-3">
                         <a style="text-decoration: none;color: #000;font-size: 13px;" href="#popup4" class="popup-link" onclick = "document.getElementById('light4').style.display='block';">
-                            <i class="material-icons" style="text-decoration: none;color: #000;">description</i></a>
+                            <i data-toggle="tooltip" data-placement="right" title="Registrar" class="material-icons" style="text-decoration: none;color: #000;">description</i></a>
                     </div>
                        
                 </div>
@@ -295,7 +296,7 @@ cnx.close();
                             <div class="col-md-12" style="margin-top: 3%;">
                         <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
                         <!--<table class="table table-hover">-->
-                        <table id="example2" class="display" cellspacing="0" width="100%">
+                        <table id="example2" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th></th>                                 
@@ -350,12 +351,132 @@ cnx.close();
                     </div>       
                 </div>
 
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
+                <div class="row">
+                         <div class="col-md-12">
+                            <div class="col-md-12" style="margin-top: 3%;">
+                        <div class="table-responsive" style="max-height: 450px;font-size: 12px;">
+                        <!--<table class="table table-hover">-->
+                        <table id="example3" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">Docente</th>
+                                    <th style="text-align: center">Curso</th>
+                                    <th style="text-align: center">Hora</th>
+                                    <th style="text-align: center">Ingreso</th>
+                                    <th style="text-align: center">Hora</th>
+                                    <th style="text-align: center">Salida</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+<%
+    try {
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("select P.apellidos_pro,P.nombre_pro,C.nombre_cur,substring(I.horaingreso,1,11),substring(I.horaingreso,13,50),substring(S.horasalida,1,11),substring(S.horasalida,13,50) "
+            + "from ingreso I "
+            + "inner join salida S "
+            + "inner join sesion Se "
+            + "inner join registro R "
+            + "inner join cursos C "
+            + "inner join profesores P "
+            + "on I.id_ingreso=S.id_ingreso "
+            + "and Se.id_sesion=I.id_sesion "
+            + "and R.id_registro=Se.id_registro "
+            + "and R.dni_pro=P.dni_pro "
+            + "and R.cod_cur=C.cod_cur "
+            + "group by I.id_ingreso");
+    while (rs.next()){
+%>
+                                <tr>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(1)%>, <%=rs.getString(2)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(5)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(6)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(5)%></td>
 
+                                </tr>                      
+<% 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
+    } catch (Exception e) {
+    }
+%>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                        </div>
+                </div>
+                            
+                            <div class="row">
+                         <div class="col-md-12">
+                            <div class="col-md-12" style="margin-top: 3%;">
+                        <div class="table-responsive" style="max-height: 450px;font-size: 12px;">
+                        <!--<table class="table table-hover">-->
+                        <table id="example4" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">Docente</th>
+                                    <th style="text-align: center">Curso</th>
+                                    <th style="text-align: center">Hora</th>
+                                    <th style="text-align: center">Ingreso</th>
+                                    <th style="text-align: center">Hora</th>
+                                    <th style="text-align: center">Salida</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+<%
+    try {
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("select P.apellidos_pro,P.nombre_pro,C.nombre_cur,substring(I.horaingreso,1,11),substring(I.horaingreso,13,50),substring(S.horasalida,1,11),substring(S.horasalida,13,50) "
+            + "from ingreso I "
+            + "inner join salida S "
+            + "inner join sesion Se "
+            + "inner join registro R "
+            + "inner join cursos C "
+            + "inner join profesores P "
+            + "on I.id_ingreso=S.id_ingreso "
+            + "and Se.id_sesion=I.id_sesion "
+            + "and R.id_registro=Se.id_registro "
+            + "and R.dni_pro=P.dni_pro "
+            + "and R.cod_cur=C.cod_cur "
+            + "group by I.id_ingreso");
+    while (rs.next()){
+%>
+                                <tr>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(1)%>, <%=rs.getString(2)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(5)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(6)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(5)%></td>
 
+                                </tr>                        
+<% 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
+    } catch (Exception e) {
+    }
+%>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                        </div>
+                </div>
 
             </div>
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
 
 <div class="modal-wrapper" id="popup">
@@ -878,10 +999,77 @@ cnx.close();
 </script>
 
 <script type="text/javascript">
+    $(document).ready(function() {
+    $('#example3').DataTable({
+        "language": {
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
+}
+    } );
+} );
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#example4').DataTable({
+        "language": {
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
+}
+    } );
+} );
+</script>
+
+<script type="text/javascript">
     function showMe (it, box) {
     var vis = (box.checked) ? "block" : "none";
     document.getElementById(it).style.display = vis;
     }
+    
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    });
+    
 </script>
                
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>

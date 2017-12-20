@@ -74,6 +74,20 @@ horasfin varchar(15) NOT NULL,
 PRIMARY KEY  (id_sesion));
 ALTER TABLE sesion ADD FOREIGN KEY(id_registro) REFERENCES registro(id_registro);
 
+create table ingreso(
+id_ingreso int(10) auto_increment NOT NULL,
+id_sesion int(10) NOT NULL,
+horaingreso varchar(50) NOT NULL,
+PRIMARY KEY  (id_ingreso));
+ALTER TABLE ingreso ADD FOREIGN KEY(id_sesion) REFERENCES sesion(id_sesion);
+
+create table salida(
+id_salida int(10) auto_increment NOT NULL,
+id_ingreso int(10) NOT NULL,
+horasalida varchar(50) NOT NULL,
+PRIMARY KEY  (id_salida));
+ALTER TABLE salida ADD FOREIGN KEY(id_ingreso) REFERENCES ingreso(id_ingreso);
+
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Administración de Proyectos con MS Project',50,350,'');
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Elaboración de Balanced Scorecard en EXCEL',50,350,'');
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Macros en Excel para el Análisis de la Información Estadística ',50,350,'');
@@ -189,6 +203,22 @@ INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dir
 INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dire_pro`,`corr_pro`,`cpre_pro`,`grad_pro`,`prof_pro`,`tipo_pro`,`cpos_pro`,`espe_pro`,`dipl_pro`,`expe_pro`,`sede_pro`) VALUES ('SIN DNI8','Oscar','Kuroiwa Quispe','','','Oscar.Kuroiwa@inei.gob.pe','','','','','','','','','Lima');
 INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dire_pro`,`corr_pro`,`cpre_pro`,`grad_pro`,`prof_pro`,`tipo_pro`,`cpos_pro`,`espe_pro`,`dipl_pro`,`expe_pro`,`sede_pro`) VALUES ('SIN DNI9','Cesar','Lara Ponce','994603513','','cesar.lara@inei.gob.pe','','','','','','','','','Lima');
 
+
+
+select P.apellidos_pro,P.nombre_pro,C.nombre_cur,I.horaingreso,S.horasalida 
+from ingreso I 
+inner join salida S
+inner join sesion Se
+inner join registro R
+inner join cursos C
+inner join profesores P
+on I.id_ingreso=S.id_ingreso
+and Se.id_sesion=I.id_sesion
+and R.id_registro=Se.id_registro
+and R.dni_pro=P.dni_pro
+and R.cod_cur=C.cod_cur
+group by I.id_ingreso
+order by I.id_ingreso desc;
 
 
 
