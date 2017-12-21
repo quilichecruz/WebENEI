@@ -176,7 +176,33 @@ public class Consultas extends Conexion{
        return false;
    }
     
-    
+    public boolean buscar_docente(String dni, String nombrepro){ 
+
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+
+    try {
+        String consulta = "select * from profesores where dni_pro = ? or nombre_pro = ? ";
+        pst = getConexion().prepareStatement(consulta);
+        pst.setString(1, dni);
+        pst.setString(2, nombrepro);
+        rs = pst.executeQuery();
+        if(rs.absolute(1)){
+            return true;
+        }      
+    } catch (Exception e) {
+        System.err.println("ERROR"+ e);
+    }finally{
+        try {
+             if (getConexion() != null) getConexion().close();
+             if (pst != null) pst.close();
+             if (rs != null) rs.close();
+        } catch (Exception e) {
+        }
+    }
+    return false;
+}  
+
     
 }
 

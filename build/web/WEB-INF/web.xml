@@ -24,6 +24,10 @@
         <servlet-name>clases_admin</servlet-name>
         <servlet-class>Servlet.clases_admin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>teacher_search</servlet-name>
+        <servlet-class>Servlet.teacher_search</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>session_admin</servlet-name>
         <url-pattern>/session_admin</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>clases_admin</servlet-name>
         <url-pattern>/clases_admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>teacher_search</servlet-name>
+        <url-pattern>/teacher_search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

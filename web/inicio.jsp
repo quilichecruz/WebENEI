@@ -13,6 +13,8 @@
     String dnipro= request.getParameter("dnipro");
     String nombrepro= request.getParameter("nombrepro");
     String id=request.getParameter("id");
+    String nombrecur= request.getParameter("nombrecur");
+
 %>
 <html>
     <head>
@@ -20,56 +22,38 @@
         <title>Inicio</title>
         <script type="text/javascript"  src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script type="text/javascript"  src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <!--<link rel="icon" type="image/png" href="media/inei.png"/!-->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="assets/css/custom/inicio-admin.css">
         <link rel="stylesheet" href="assets/css/custom/admin-popup.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-
+        <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+        <script type="text/javascript"> 
+        $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+        }); 
+        </script>
     </head>
-    <body>
+    
+    
+    <body style="font-family: 'Dosis', sans-serif;">
         <nav class="nav nav-tabs" id="myTab">
-            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-report" role="tab" aria-controls="nav-report" aria-selected="false" style="color: #000;font-size: 13px;"><img src="media/logo.png" alt="" style="width: 45px;height: auto;text-align: center;"></a>
+            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-report" role="tab" aria-controls="nav-report" aria-selected="false" style="color: #000;font-size: 13px;"><img src="media/logocolor.png" alt="" style="width: 45px;height: auto;text-align: center;"></a>
             <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="color: #000;font-size: 13px;font-weight: 600;"><i class="material-icons" style="font-size: 18px">school</i> Docentes</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" style="color: #000;font-size: 13px;font-weight: 600;"><i class="material-icons" style="font-size: 18px">local_library</i> Cursos</a>
             <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" style="color: #000;font-size: 13px;font-weight: 600;"><i class="material-icons" style="font-size: 18px">dashboard</i> Reportes</a>
         </nav>
+        
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <br>
         <div class="container">
             <!--Menu-->
             <div class="row">
-                    <%--<div class="col-md-3">
-                        <form>
-                            <select style="font-size: 12px;width: 70%">
-                                <option>Docentes con cursos</option>
-<%
-    Connection cnx=null;
-    Statement sta=null;
-    ResultSet rs=null;
-try {
-    Class.forName("com.mysql.jdbc.Driver");
-    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-    sta=cnx.createStatement();
-    rs=sta.executeQuery("select * from cursos");
-    while (rs.next()){
-%>
-                                <option value="<%=rs.getString(1)%>"><%=rs.getString(2)%></option>
-<% 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-    } catch (Exception e) {
-           }
-%> 
-                            </select>
-                            <button style="background: transparent;border: 0px;"><i class="material-icons" style="font-size: 18px;">search</i></button>
-                        </form>
-                    </div>
+                    
                             
-                    <div class="col-md-6">
+                    <%--<div class="col-md-6">
                         <form>
                             <select style="font-size: 12px;width: 70%">
                                 <option>Lista de cursos</option>
@@ -95,11 +79,38 @@ try {
                         </form>
                     </div>--%>
                             
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <a style="text-decoration: none;color: #000;font-size: 13px;" href="#popup" class="popup-link" onclick = "document.getElementById('light').style.display='block';">
-                            <i data-toggle="tooltip" data-placement="right" title="Registrar" class="material-icons" style="text-decoration: none;color: #000;">account_circle</i></a>
+                        <i data-toggle="tooltip" data-placement="right" title="Registrar docente" class="material-icons" style="text-decoration: none;color: #000;margin-left: 50%">account_circle</i></a>
                     </div>
-
+                    <div class="col-md-6">
+                        <form action="teacher_search" method="post">
+                            <select name="dnipro" style="font-size: 12px;width: 70%">
+                                <option>Docentes con cursos</option>
+<%
+    Connection cnx=null;
+    Statement sta=null;
+    ResultSet rs=null;
+try {
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("select count(T1.id_registro),T2.apellidos_pro,T2.nombre_pro,T2.dni_pro from registro T1 inner join profesores T2 ON T1.dni_pro=T2.dni_pro and T1.esta != 'Finalizo' WHERE T1.dni_pro=T1.dni_pro  group by T2.apellidos_pro order by T2.apellidos_pro;");
+    while (rs.next()){
+%>
+                        <option value="<%=rs.getString(4)%>"><%=rs.getString(1)%> - <%=rs.getString(2)%>, <%=rs.getString(3)%></option>
+<% 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
+    } catch (Exception e) {
+           }
+%> 
+                            </select>
+                            <button style="background: transparent;border: 0px;"><i class="material-icons" style="font-size: 18px;">search</i></button>
+                        </form>
+                    </div>
             </div>
             <!--Contenido-->
             <div class="row">
@@ -169,9 +180,6 @@ try {
                             </thead>
                             <tbody>
 <%
-    Connection cnx=null;
-    Statement sta=null;
-    ResultSet rs=null;
     try {
     Class.forName("com.mysql.jdbc.Driver");
     cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
@@ -180,18 +188,18 @@ try {
     while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?dnipro=<%=rs.getString(1)%>&nombrepro=<%=rs.getString(2)%>&apellidospro=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 15px;">account_circle</i></a></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?dnipro=<%=rs.getString(1)%>&nombrepro=<%=rs.getString(2)%>&apellidospro=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;"><i data-toggle="tooltip" data-placement="right" title="Asignar curso" class="material-icons" style="font-size: 15px;">account_circle</i></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';"><%=rs.getString(3)%>, <%=rs.getString(2)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(15)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(9)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(8)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
                                         <a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';">
-                                            <i class="material-icons" style="font-size: 15px">portrait</i></a>
+                                            <i class="material-icons" data-toggle="tooltip" data-placement="left" style="font-size: 15px" title="Detalle">portrait</i></a>
                                         <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
-                                            <i class="material-icons" style="font-size: 15px;">edit</i></a>
+                                            <i class="material-icons" data-toggle="tooltip" data-placement="top" style="font-size: 15px;" title="Editar">edit</i></a>
                                         <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
-                                            <i class="material-icons" style="font-size: 15px">highlight_off</i></a>
+                                            <i class="material-icons" data-toggle="tooltip" data-placement="right" style="font-size: 15px" title="Eliminar">highlight_off</i></a>
                                     </td>
                                 </tr>                      
 <% 
@@ -207,14 +215,17 @@ try {
                         </div>
                     </div>
                 </div>
+            </div>    
                             
-                <div class="col-md-12">
-                    <div class="col-md-12" style="margin-top: 5%;">
+          <div class="row">
+                         <div class="col-md-12">
+                            <div class="col-md-12" style="margin-top: 3%;">
                         <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
-                        <table id="example1" class="display" style="border: 1px solid #000;" cellspacing="0" width="100%">
+                        <!--<table class="table table-hover">-->
+                        <table id="example1" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th><a href="assign.jsp?dnipro=<%=dnipro%>"><i class="material-icons" style="color: #000">account_circle</i></a></th>                                        
+                                    <th></th>                                 
                                     <th style="text-align: center">Curso</th>
                                     <th style="text-align: center">Inscritos</th>
                                     <th style="text-align: center">Vacantes</th>
@@ -237,45 +248,41 @@ try {
         while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="#" style="color: #000"><i class="material-icons" style="font-size: 15px">description</i></a></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="color: #000"><i class="material-icons" style="font-size: 15px">description</i></a></td>
                                     <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
                                     <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(4)%></td>
                                     <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
                                     <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(13)%></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center;font-size: 10px"><%=rs.getString(14)%></td>
+                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center;"><%=rs.getString(14)%></td>
                                     <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%></td>
                                     <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
                                     <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
                                     <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
                                     <td>
                                         <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
-                                            <i class="material-icons" style="font-size: 15px; color: #000">timer</i></a>
+                                            <i data-toggle="tooltip" data-placement="left" class="material-icons" style="font-size: 15px; color: #000" title="Agregar sesión">timer</i></a>
                                         <a href="editarrela.jsp?id=<%=rs.getString(1)%>">
-                                            <i class="material-icons" style="font-size: 15px; color: #000">edit</i></a>
+                                            <i data-toggle="tooltip" data-placement="top" class="material-icons" style="font-size: 15px; color: #000" title="Editar">edit</i></a>
                                         <a href="eliminarrela.jsp?id=<%=rs.getString(1)%>" onclick="return eliminar()">
-                                            <i class="material-icons" style="font-size: 15px;color: #000">highlight_off</i></a>
+                                            <i data-toggle="tooltip" data-placement="right" class="material-icons" style="font-size: 15px;color: #000" title="Eliminar">highlight_off</i></a>
                                     </td>
-                                </tr>
-                            </tbody>
-                <% 
-}
-sta.close();
-rs.close();
-cnx.close();
+                                </tr>                      
+<% 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
     } catch (Exception e) {
-           }
+    }
 %>
-                            </table>
+                            </tbody>
+                        </table>
                         </div>
+                    </div>
+                        </div>
+   
                     </div> 
-                </div>
-                </div>
-            <!--Footer-->
-            <div class="row">
-                <div class="col">
-                
-                </div>
-            </div>
+
         </div>
     </div>
     
@@ -284,9 +291,9 @@ cnx.close();
                 <div class="container">
                 <!--Menú-->
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                         <a style="text-decoration: none;color: #000;font-size: 13px;" href="#popup4" class="popup-link" onclick = "document.getElementById('light4').style.display='block';">
-                            <i data-toggle="tooltip" data-placement="right" title="Registrar" class="material-icons" style="text-decoration: none;color: #000;">description</i></a>
+                            <i data-toggle="tooltip" data-placement="right" title="Registrar curso" class="material-icons" style="text-decoration: none;color: #000;margin-left: 50%">description</i></a>
                     </div>
                        
                 </div>
@@ -316,17 +323,17 @@ cnx.close();
     while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 15px">description</i></a></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><%=rs.getString(2)%></a></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 15px"  data-toggle="tooltip" data-placement="right" title="Asignar docente">description</i></a></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="#nav-profile?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><%=rs.getString(2)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
                                         <a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';">
-                                            <i class="material-icons" style="font-size: 15px">toc</i></a>
+                                            <i class="material-icons" style="font-size: 15px"  data-toggle="tooltip" data-placement="left" title="Detalle">toc</i></a>
                                         <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
-                                            <i class="material-icons" style="font-size: 15px;">edit</i></a>
+                                            <i class="material-icons" style="font-size: 15px;"  data-toggle="tooltip" data-placement="top" title="Editar">edit</i></a>
                                         <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
-                                            <i class="material-icons" style="font-size: 15px">highlight_off</i></a>
+                                            <i class="material-icons" style="font-size: 15px"  data-toggle="tooltip" data-placement="right" title="Eliminar">highlight_off</i></a>
                                     </td>
                                 </tr>                      
 <% 
@@ -342,13 +349,75 @@ cnx.close();
                         </div>
                     </div>
                         </div>
+   
                     </div>       
-                <!--Footer-->
-                    <div class="row">
-                        <div class="col-md-12">
+                            
+                            <div class="row">
+                         <div class="col-md-12">
+                            <div class="col-md-12" style="margin-top: 3%;">
+                        <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
+                        <!--<table class="table table-hover">-->
+                        <table id="example5" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th></th>                                 
+                                    <th style="text-align: center">Curso</th>
+                                    <th style="text-align: center">Inscritos</th>
+                                    <th style="text-align: center">Vacantes</th>
+                                    <th style="text-align: center">Disponibles</th>
+                                    <th style="text-align: center">Frecuencia</th>
+                                    <th style="text-align: center">Fecha Inicio</th>
+                                    <th style="text-align: center">Fecha Término</th>
+                                    <th style="text-align: center">Estado</th>
+                                    <th style="text-align: center">Lab</th>
+                                    <th style="text-align: center">Opción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+<%
+try {
+        Class.forName("com.mysql.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+        sta=cnx.createStatement();
+        rs=sta.executeQuery("select T1.id_registro,T1.cod_cur,T3.nombre_cur,T1.paga,T1.dni_pro,T2.nombre_pro,T2.apellidos_pro,T1.fechatini,T1.fechatfin,T1.esta,T1.labo,T3.vaca_cur,-sum(paga-vaca_cur),T1.frec FROM registro T1 INNER JOIN profesores T2 INNER JOIN cursos T3  ON T1.dni_pro = T2.dni_pro AND T1.cod_cur = T3.cod_cur group by T1.id_registro");
+        while (rs.next()){
+%>
+                                <tr>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="color: #000"><i class="material-icons" style="font-size: 15px">description</i></a></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(4)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(13)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(14)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center">
+                                        <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
+                                            <i data-toggle="tooltip" data-placement="left" class="material-icons" style="font-size: 15px; color: #000" title="Agregar sesión">timer</i></a>
+                                        <a href="editarrela.jsp?id=<%=rs.getString(1)%>">
+                                            <i data-toggle="tooltip" data-placement="top" class="material-icons" style="font-size: 15px; color: #000" title="Editar">edit</i></a>
+                                        <a href="eliminarrela.jsp?id=<%=rs.getString(1)%>" onclick="return eliminar()">
+                                            <i data-toggle="tooltip" data-placement="right" class="material-icons" style="font-size: 15px;color: #000" title="Eliminar">highlight_off</i></a>
+                                    </td>
+                                </tr>                      
+<% 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
+    } catch (Exception e) {
+    }
+%>
+                            </tbody>
+                        </table>
                         </div>
-                    
-                    </div>       
+                    </div>
+                        </div>
+   
+                    </div> 
+     
                 </div>
 
             </div>
@@ -1061,15 +1130,41 @@ cnx.close();
 </script>
 
 <script type="text/javascript">
+    $(document).ready(function() {
+    $('#example5').DataTable({
+        "language": {
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
+}
+    } );
+} );
+</script>
+
+<script type="text/javascript">
     function showMe (it, box) {
     var vis = (box.checked) ? "block" : "none";
     document.getElementById(it).style.display = vis;
     }
-    
-    $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-    });
-    
 </script>
                
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>

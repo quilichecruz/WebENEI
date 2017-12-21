@@ -205,28 +205,10 @@ INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dir
 
 
 
-select P.apellidos_pro,P.nombre_pro,C.nombre_cur,I.horaingreso,S.horasalida 
-from ingreso I 
-inner join salida S
-inner join sesion Se
-inner join registro R
-inner join cursos C
-inner join profesores P
-on I.id_ingreso=S.id_ingreso
-and Se.id_sesion=I.id_sesion
-and R.id_registro=Se.id_registro
-and R.dni_pro=P.dni_pro
-and R.cod_cur=C.cod_cur
-group by I.id_ingreso
-order by I.id_ingreso desc;
-
-
-
-
-
-
-
-
+select if(t1.horaingreso!='' or t1.horaingreso!=null,t1.horaingreso,'aaaa'),if(t2.horasalida!='' or t2.horasalida!=null,t2.horasalida,'bbb') 
+from ingreso t1
+inner join salida t2
+on t1.id_ingreso=t2.id_ingreso
 
 
 
