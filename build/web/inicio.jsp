@@ -164,7 +164,7 @@ try {
                     </div>
                 </div>--%>  
                 <div class="col-md-12">
-                    <div class="col-md-12" style="margin-top: 3%;">
+                    <div class="col-md-12" style="margin-top: 0%;">
                         <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
                         <!--<table class="table table-hover">-->
                         <table id="example" class="display" style="border: 1px solid #000;" cellspacing="0" width="100%">
@@ -220,7 +220,7 @@ try {
           <div class="row">
                          <div class="col-md-12">
                             <div class="col-md-12" style="margin-top: 3%;">
-                        <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
+                        <div class="table-responsive" style="font-size: 12px;">
                         <!--<table class="table table-hover">-->
                         <table id="example1" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>
@@ -235,6 +235,7 @@ try {
                                     <th style="text-align: center">Fecha Término</th>
                                     <th style="text-align: center">Estado</th>
                                     <th style="text-align: center">Lab</th>
+                                    <th style="text-align: center">Docente</th>
                                     <th style="text-align: center">Opción</th>
                                 </tr>
                             </thead>
@@ -249,16 +250,17 @@ try {
 %>
                                 <tr>
                                     <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="color: #000"><i class="material-icons" style="font-size: 15px">description</i></a></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(4)%></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(13)%></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center;"><%=rs.getString(14)%></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
-                                    <td style="padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
-                                    <td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(4)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(13)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;"><%=rs.getString(14)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(7)%>, <%=rs.getString(6)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center">
                                         <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
                                             <i data-toggle="tooltip" data-placement="left" class="material-icons" style="font-size: 15px; color: #000" title="Agregar sesión">timer</i></a>
                                         <a href="editarrela.jsp?id=<%=rs.getString(1)%>">
@@ -300,7 +302,7 @@ try {
                 <!--Contenido-->
                     <div class="row">
                          <div class="col-md-12">
-                            <div class="col-md-12" style="margin-top: 3%;">
+                            <div class="col-md-12" style="margin-top: 0%;">
                         <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
                         <!--<table class="table table-hover">-->
                         <table id="example2" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
@@ -355,7 +357,7 @@ try {
                             <div class="row">
                          <div class="col-md-12">
                             <div class="col-md-12" style="margin-top: 3%;">
-                        <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
+                        <div class="table-responsive" style="font-size: 12px;">
                         <!--<table class="table table-hover">-->
                         <table id="example5" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>
@@ -370,6 +372,7 @@ try {
                                     <th style="text-align: center">Fecha Término</th>
                                     <th style="text-align: center">Estado</th>
                                     <th style="text-align: center">Lab</th>
+                                    <th style="text-align: center">Docente</th>
                                     <th style="text-align: center">Opción</th>
                                 </tr>
                             </thead>
@@ -385,14 +388,15 @@ try {
                                 <tr>
                                     <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="color: #000"><i class="material-icons" style="font-size: 15px">description</i></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(4)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;"><%=rs.getInt(4)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(13)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;color: red"><%=rs.getInt(13)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(14)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;"><%=rs.getString(7)%>, <%=rs.getString(6)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center">
                                         <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
                                             <i data-toggle="tooltip" data-placement="left" class="material-icons" style="font-size: 15px; color: #000" title="Agregar sesión">timer</i></a>
@@ -433,10 +437,10 @@ try {
                                 <tr>
                                     <th style="text-align: center">Docente</th>
                                     <th style="text-align: center">Curso</th>
-                                    <th style="text-align: center">Hora</th>
-                                    <th style="text-align: center">Ingreso</th>
-                                    <th style="text-align: center">Hora</th>
-                                    <th style="text-align: center">Salida</th>
+                                    <th style="text-align: center">Hora Programada</th>
+                                    <th style="text-align: center">Hora Ingreso - Salida</th>
+                                    <th style="text-align: center">Dia</th>
+                                    <th style="text-align: center">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -445,7 +449,7 @@ try {
     Class.forName("com.mysql.jdbc.Driver");
     cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
     sta=cnx.createStatement();
-    rs=sta.executeQuery("select P.apellidos_pro,P.nombre_pro,C.nombre_cur,substring(I.horaingreso,1,11),substring(I.horaingreso,13,50),substring(S.horasalida,1,11),substring(S.horasalida,13,50) "
+    rs=sta.executeQuery("select P.apellidos_pro,P.nombre_pro,C.nombre_cur,substring(I.horaingreso,1,11),substring(I.horaingreso,13,50),substring(S.horasalida,1,11),substring(S.horasalida,13,50),Se.horasini,Se.horasfin "
             + "from ingreso I "
             + "inner join salida S "
             + "inner join sesion Se "
@@ -461,12 +465,12 @@ try {
     while (rs.next()){
 %>
                                 <tr>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(1)%>, <%=rs.getString(2)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(5)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(6)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(5)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(1)%>, <%=rs.getString(2)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(3)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%> - <%=rs.getString(9)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(4)%> - <%=rs.getString(6)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(5)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><label style="color: blue">Asistió</label></td>
 
                                 </tr>                      
 <% 
@@ -492,12 +496,12 @@ try {
                         <table id="example4" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th style="text-align: center">Docente</th>
+                                    <th style="text-align: center">Fecha</th>
+                                    <th style="text-align: center">Hora</th>
                                     <th style="text-align: center">Curso</th>
-                                    <th style="text-align: center">Hora</th>
-                                    <th style="text-align: center">Ingreso</th>
-                                    <th style="text-align: center">Hora</th>
-                                    <th style="text-align: center">Salida</th>
+                                    <th style="text-align: center">Docente</th>
+                                    <th style="text-align: center">Estado</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -506,29 +510,24 @@ try {
     Class.forName("com.mysql.jdbc.Driver");
     cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
     sta=cnx.createStatement();
-    rs=sta.executeQuery("select P.apellidos_pro,P.nombre_pro,C.nombre_cur,substring(I.horaingreso,1,11),substring(I.horaingreso,13,50),substring(S.horasalida,1,11),substring(S.horasalida,13,50) "
-            + "from ingreso I "
-            + "inner join salida S "
-            + "inner join sesion Se "
+    rs=sta.executeQuery("select S.id_sesion,S.fecha,S.horasini,S.horasfin,C.nombre_cur,P.nombre_pro,P.apellidos_pro "
+            + "from sesion S "
             + "inner join registro R "
-            + "inner join cursos C "
             + "inner join profesores P "
-            + "on I.id_ingreso=S.id_ingreso "
-            + "and Se.id_sesion=I.id_sesion "
-            + "and R.id_registro=Se.id_registro "
+            + "inner join cursos C "
+            + "on S.id_registro=R.id_registro "
             + "and R.dni_pro=P.dni_pro "
             + "and R.cod_cur=C.cod_cur "
-            + "group by I.id_ingreso");
+            + "where S.id_sesion "
+            + "not in (select I.id_sesion from ingreso I)");
     while (rs.next()){
 %>
                                 <tr>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(1)%>, <%=rs.getString(2)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(5)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(6)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(5)%></td>
-
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(2)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(3)%> - <%=rs.getString(4)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(5)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(7)%>, <%=rs.getString(6)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><label style="color: red">Faltó</label></td>
                                 </tr>                        
 <% 
     }

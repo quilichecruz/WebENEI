@@ -28,7 +28,7 @@
     </head>
     <body style="font-size: 11px;">
         <nav class="nav nav-tabs" id="myTab">
-            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-report" role="tab" aria-controls="nav-report" aria-selected="false" style="color: #000;font-size: 13px;"><img src="media/logo.png" alt="" style="width: 45px;height: auto;text-align: center;"></a>
+            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-report" role="tab" aria-controls="nav-report" aria-selected="false" style="color: #000;font-size: 13px;"><img src="media/logocolor.png" alt="" style="width: 45px;height: auto;text-align: center;"></a>
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -80,20 +80,49 @@
                         </div>
                         
                         <div class="col-md-7">
+                            <%
+        Connection cnx=null;
+        Statement sta=null;
+        ResultSet rs=null;
+        try {
+        Class.forName("com.mysql.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+        sta=cnx.createStatement();
+        rs=sta.executeQuery("select C.nombre_cur,R.fechatini,R.fechatfin,frec from registro R inner join cursos C on R.cod_cur=C.cod_cur where R.dni_pro="+dnipro);
+        while (rs.next()){
+    %>    
+       
+        <div class="card bg-white mb-3" style="max-width: 20rem;">
+            <!--<div class="card-header">Detalle</div>!-->
+                <div class="card-body">
+                <h4 class="card-title"><%=rs.getString(1)%></h4>
+                <p class="card-text">
+                    <b>Fecha Inicio:</b> <%=rs.getString(2)%><br>
+                    <b>Fecha Término:</b> <%=rs.getString(3)%><br>
+                    <b>Frecuencia:</b> <%=rs.getString(4)%>
+                </p>
+            </div>
+        </div>
+    <% 
+        }
+        sta.close();
+        rs.close();
+        cnx.close();
+        } catch (Exception e) {
+        }
+    %>                        
+                            
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered">
                                     <thead>
                                         <tr>
-                                            <th style="text-align: center;background: #000;color: white">Fecha</th>
-                                            <th style="text-align: center;background: #000;color: white">Hora</th>
-                                            <th style="text-align: center;background: #000;color: white">Opción</th>
+                                            <th style="text-align: center;color: white" class="bg-primary">Fecha</th>
+                                            <th style="text-align: center;color: white" class="bg-primary">Hora</th>
+                                            <th style="text-align: center;color: white" class="bg-primary">Opción</th>
                                         </tr>
                                     </thead>                                   
                                     <tbody>
     <%
-        Connection cnx=null;
-        Statement sta=null;
-        ResultSet rs=null;
         try {
         Class.forName("com.mysql.jdbc.Driver");
         cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");

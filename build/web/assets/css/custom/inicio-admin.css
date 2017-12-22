@@ -8,3 +8,7 @@ button{
 div.table{
     font-size: 10px;
 }
+input[type=search]{
+    width: 200px;
+    
+}

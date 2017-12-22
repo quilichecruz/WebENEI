@@ -53,6 +53,8 @@ public final class inicio_jsp extends org.apache.jasper.runtime.HttpJspBase
     String dnipro= request.getParameter("dnipro");
     String nombrepro= request.getParameter("nombrepro");
     String id=request.getParameter("id");
+    String nombrecur= request.getParameter("nombrecur");
+
 
       out.write("\n");
       out.write("<html>\n");
@@ -61,29 +63,47 @@ public final class inicio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>Inicio</title>\n");
       out.write("        <script type=\"text/javascript\"  src=\"https://code.jquery.com/jquery-1.12.4.js\"></script>\n");
       out.write("        <script type=\"text/javascript\"  src=\"https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js\"></script>\n");
+      out.write("        <!--<link rel=\"icon\" type=\"image/png\" href=\"media/inei.png\"/!-->\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"assets/css/custom/inicio-admin.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"assets/css/custom/admin-popup.css\">\n");
       out.write("        <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css\">\n");
-      out.write("\n");
+      out.write("        <link href=\"https://fonts.googleapis.com/css?family=Dosis\" rel=\"stylesheet\">\n");
+      out.write("        <script type=\"text/javascript\"> \n");
+      out.write("        $(function () {\n");
+      out.write("        $('[data-toggle=\"tooltip\"]').tooltip();\n");
+      out.write("        }); \n");
+      out.write("        </script>\n");
       out.write("    </head>\n");
-      out.write("    <body>\n");
+      out.write("    \n");
+      out.write("    \n");
+      out.write("    <body style=\"font-family: 'Dosis', sans-serif;\">\n");
       out.write("        <nav class=\"nav nav-tabs\" id=\"myTab\">\n");
-      out.write("            <a class=\"nav-item nav-link\" id=\"nav-home-tab\" data-toggle=\"tab\" href=\"#nav-report\" role=\"tab\" aria-controls=\"nav-report\" aria-selected=\"false\" style=\"color: #000;font-size: 13px;\"><img src=\"media/logo.png\" alt=\"\" style=\"width: 45px;height: auto;text-align: center;\"></a>\n");
+      out.write("            <a class=\"nav-item nav-link\" id=\"nav-home-tab\" data-toggle=\"tab\" href=\"#nav-report\" role=\"tab\" aria-controls=\"nav-report\" aria-selected=\"false\" style=\"color: #000;font-size: 13px;\"><img src=\"media/logocolor.png\" alt=\"\" style=\"width: 45px;height: auto;text-align: center;\"></a>\n");
       out.write("            <a class=\"nav-item nav-link\" id=\"nav-home-tab\" data-toggle=\"tab\" href=\"#nav-home\" role=\"tab\" aria-controls=\"nav-home\" aria-selected=\"true\" style=\"color: #000;font-size: 13px;font-weight: 600;\"><i class=\"material-icons\" style=\"font-size: 18px\">school</i> Docentes</a>\n");
       out.write("            <a class=\"nav-item nav-link\" id=\"nav-profile-tab\" data-toggle=\"tab\" href=\"#nav-profile\" role=\"tab\" aria-controls=\"nav-profile\" aria-selected=\"false\" style=\"color: #000;font-size: 13px;font-weight: 600;\"><i class=\"material-icons\" style=\"font-size: 18px\">local_library</i> Cursos</a>\n");
       out.write("            <a class=\"nav-item nav-link\" id=\"nav-contact-tab\" data-toggle=\"tab\" href=\"#nav-contact\" role=\"tab\" aria-controls=\"nav-contact\" aria-selected=\"false\" style=\"color: #000;font-size: 13px;font-weight: 600;\"><i class=\"material-icons\" style=\"font-size: 18px\">dashboard</i> Reportes</a>\n");
       out.write("        </nav>\n");
+      out.write("        \n");
       out.write("        <div class=\"tab-content\" id=\"nav-tabContent\">\n");
       out.write("            <div class=\"tab-pane fade show active\" id=\"nav-home\" role=\"tabpanel\" aria-labelledby=\"nav-home-tab\">\n");
       out.write("        <br>\n");
       out.write("        <div class=\"container\">\n");
       out.write("            <!--Menu-->\n");
       out.write("            <div class=\"row\">\n");
-      out.write("                    <div class=\"col-md-3\">\n");
-      out.write("                        <form>\n");
-      out.write("                            <select style=\"font-size: 12px;width: 70%\">\n");
+      out.write("                    \n");
+      out.write("                            \n");
+      out.write("                    ");
+      out.write("\n");
+      out.write("                            \n");
+      out.write("                    <div class=\"col-md-6\">\n");
+      out.write("                        <a style=\"text-decoration: none;color: #000;font-size: 13px;\" href=\"#popup\" class=\"popup-link\" onclick = \"document.getElementById('light').style.display='block';\">\n");
+      out.write("                        <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"Registrar docente\" class=\"material-icons\" style=\"text-decoration: none;color: #000;margin-left: 50%\">account_circle</i></a>\n");
+      out.write("                    </div>\n");
+      out.write("                    <div class=\"col-md-6\">\n");
+      out.write("                        <form action=\"teacher_search\" method=\"post\">\n");
+      out.write("                            <select name=\"dnipro\" style=\"font-size: 12px;width: 70%\">\n");
       out.write("                                <option>Docentes con cursos</option>\n");
 
     Connection cnx=null;
@@ -93,15 +113,20 @@ try {
     Class.forName("com.mysql.jdbc.Driver");
     cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
     sta=cnx.createStatement();
-    rs=sta.executeQuery("select * from cursos");
+    rs=sta.executeQuery("select count(T1.id_registro),T2.apellidos_pro,T2.nombre_pro,T2.dni_pro from registro T1 inner join profesores T2 ON T1.dni_pro=T2.dni_pro and T1.esta != 'Finalizo' WHERE T1.dni_pro=T1.dni_pro  group by T2.apellidos_pro order by T2.apellidos_pro;");
     while (rs.next()){
 
       out.write("\n");
-      out.write("                                <option value=\"");
-      out.print(rs.getString(1));
+      out.write("                        <option value=\"");
+      out.print(rs.getString(4));
       out.write('"');
       out.write('>');
+      out.print(rs.getString(1));
+      out.write(" - ");
       out.print(rs.getString(2));
+      out.write(',');
+      out.write(' ');
+      out.print(rs.getString(3));
       out.write("</option>\n");
  
     }
@@ -115,44 +140,6 @@ try {
       out.write("                            </select>\n");
       out.write("                            <button style=\"background: transparent;border: 0px;\"><i class=\"material-icons\" style=\"font-size: 18px;\">search</i></button>\n");
       out.write("                        </form>\n");
-      out.write("                    </div>\n");
-      out.write("                            \n");
-      out.write("                    <div class=\"col-md-6\">\n");
-      out.write("                        <form>\n");
-      out.write("                            <select style=\"font-size: 12px;width: 70%\">\n");
-      out.write("                                <option>Lista de cursos</option>\n");
-
-try {
-    Class.forName("com.mysql.jdbc.Driver");
-    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
-    sta=cnx.createStatement();
-    rs=sta.executeQuery("select * from cursos");
-    while (rs.next()){
-
-      out.write("\n");
-      out.write("                                <option value=\"");
-      out.print(rs.getString(1));
-      out.write('"');
-      out.write('>');
-      out.print(rs.getString(2));
-      out.write("</option>\n");
- 
-    }
-    sta.close();
-    rs.close();
-    cnx.close();
-    } catch (Exception e) {
-           }
-
-      out.write(" \n");
-      out.write("                            </select>\n");
-      out.write("                            <button style=\"background: transparent;border: 0px;\"><i class=\"material-icons\" style=\"font-size: 18px;\">search</i></button>\n");
-      out.write("                        </form>\n");
-      out.write("                    </div>\n");
-      out.write("                            \n");
-      out.write("                    <div class=\"col-md-3\">\n");
-      out.write("                        <a style=\"text-decoration: none;color: #000;font-size: 13px;\" href=\"#popup\" class=\"popup-link\" onclick = \"document.getElementById('light').style.display='block';\">\n");
-      out.write("                            <i class=\"material-icons\" style=\"text-decoration: none;color: #000;\">account_circle</i></a>\n");
       out.write("                    </div>\n");
       out.write("            </div>\n");
       out.write("            <!--Contenido-->\n");
@@ -160,10 +147,10 @@ try {
       out.write("                ");
       out.write("  \n");
       out.write("                <div class=\"col-md-12\">\n");
-      out.write("                    <div class=\"col-md-12\" style=\"margin-top: 3%;\">\n");
+      out.write("                    <div class=\"col-md-12\" style=\"margin-top: 0%;\">\n");
       out.write("                        <div class=\"table-responsive\" style=\"max-height: 340px;font-size: 12px;\">\n");
       out.write("                        <!--<table class=\"table table-hover\">-->\n");
-      out.write("                        <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"100%\">\n");
+      out.write("                        <table id=\"example\" class=\"display\" style=\"border: 1px solid #000;\" cellspacing=\"0\" width=\"100%\">\n");
       out.write("                            <thead>\n");
       out.write("                                <tr>\n");
       out.write("                                    <th></th>                                        \n");
@@ -191,7 +178,7 @@ try {
       out.print(rs.getString(2));
       out.write("&apellidospro=");
       out.print(rs.getString(3));
-      out.write("\" style=\"text-decoration: none;color:#000;\"><i class=\"material-icons\" style=\"font-size: 18px\">account_circle</i></a></td>\n");
+      out.write("\" style=\"text-decoration: none;color:#000;\"><i data-toggle=\"tooltip\" data-placement=\"right\" title=\"Asignar curso\" class=\"material-icons\" style=\"font-size: 15px;\">account_circle</i></a></td>\n");
       out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\"><a style=\"text-decoration: none;color: #000;\" href=\"inicio.jsp?dnipro=");
       out.print(rs.getString(1));
       out.write("#popup2\" onclick = \"document.getElementById('light2').style.display='block';\">");
@@ -213,15 +200,15 @@ try {
       out.write("                                        <a style=\"text-decoration: none;color: #000;\" href=\"inicio.jsp?dnipro=");
       out.print(rs.getString(1));
       out.write("#popup2\" onclick = \"document.getElementById('light2').style.display='block';\">\n");
-      out.write("                                            <i class=\"material-icons\" style=\"font-size: 18px\">toc</i></a>\n");
+      out.write("                                            <i class=\"material-icons\" data-toggle=\"tooltip\" data-placement=\"left\" style=\"font-size: 15px\" title=\"Detalle\">portrait</i></a>\n");
       out.write("                                        <a style=\"text-decoration: none;color: #000;\" href=\"editpro.jsp?dnipro=");
       out.print(rs.getString(1));
       out.write("\">\n");
-      out.write("                                            <i class=\"material-icons\" style=\"font-size: 18px;\">edit</i></a>\n");
+      out.write("                                            <i class=\"material-icons\" data-toggle=\"tooltip\" data-placement=\"top\" style=\"font-size: 15px;\" title=\"Editar\">edit</i></a>\n");
       out.write("                                        <a style=\"text-decoration: none;color: #000;\" href=\"eliminarpro.jsp?dnipro=");
       out.print(rs.getString(1));
       out.write("\" onclick=\"return eliminar()\">\n");
-      out.write("                                            <i class=\"material-icons\" style=\"font-size: 18px\">highlight_off</i></a>\n");
+      out.write("                                            <i class=\"material-icons\" data-toggle=\"tooltip\" data-placement=\"right\" style=\"font-size: 15px\" title=\"Eliminar\">highlight_off</i></a>\n");
       out.write("                                    </td>\n");
       out.write("                                </tr>                      \n");
  
@@ -238,14 +225,17 @@ try {
       out.write("                        </div>\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
+      out.write("            </div>    \n");
       out.write("                            \n");
-      out.write("                <div class=\"col-md-12\">\n");
-      out.write("                    <div class=\"col-md-12\" style=\"margin-top: 3%;\">\n");
+      out.write("          <div class=\"row\">\n");
+      out.write("                         <div class=\"col-md-12\">\n");
+      out.write("                            <div class=\"col-md-12\" style=\"margin-top: 3%;\">\n");
       out.write("                        <div class=\"table-responsive\" style=\"max-height: 340px;font-size: 12px;\">\n");
-      out.write("                        <table id=\"example1\" class=\"display\" cellspacing=\"0\" width=\"100%\">\n");
+      out.write("                        <!--<table class=\"table table-hover\">-->\n");
+      out.write("                        <table id=\"example1\" class=\"display\" style=\"border: 1px solid #000\" cellspacing=\"0\" width=\"100%\">\n");
       out.write("                            <thead>\n");
       out.write("                                <tr>\n");
-      out.write("                                    <th></th>                                        \n");
+      out.write("                                    <th></th>                                 \n");
       out.write("                                    <th style=\"text-align: center\">Curso</th>\n");
       out.write("                                    <th style=\"text-align: center\">Inscritos</th>\n");
       out.write("                                    <th style=\"text-align: center\">Vacantes</th>\n");
@@ -269,73 +259,68 @@ try {
 
       out.write("\n");
       out.write("                                <tr>\n");
-      out.write("                                    <td style=\"text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\"><a><i class=\"material-icons\" style=\"font-size: 18px\">import_contacts</i></a></td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.write("                                    <td style=\"text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\"><a style=\"color: #000\"><i class=\"material-icons\" style=\"font-size: 15px\">description</i></a></td>\n");
+      out.write("                                    <td style=\"padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;\">");
       out.print(rs.getString(3));
       out.write("</td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.write("                                    <td style=\"padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center\">");
       out.print(rs.getInt(4));
       out.write("</td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.write("                                    <td style=\"padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center\">");
       out.print(rs.getInt(12));
       out.write("</td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.write("                                    <td style=\"padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center\">");
       out.print(rs.getInt(13));
       out.write("</td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.write("                                    <td style=\"padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center;\">");
       out.print(rs.getString(14));
       out.write("</td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.write("                                    <td style=\"padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center\">");
       out.print(rs.getString(8));
       out.write("</td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.write("                                    <td style=\"padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center\">");
       out.print(rs.getString(9));
       out.write("</td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.write("                                    <td style=\"padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center\">");
       out.print(rs.getString(10));
       out.write("</td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.write("                                    <td style=\"padding: 10px 10px 10px 10px;margin: 0px 0px 0px 0px;text-align: center\">");
       out.print(rs.getString(11));
       out.write("</td>\n");
       out.write("                                    <td>\n");
-      out.write("                                        <a href=\"editarrela.jsp?id=");
-      out.print(rs.getString(1));
-      out.write("\">\n");
-      out.write("                                        </a>   \n");
-      out.write("                                        <a href=\"sesion.jsp?id=");
+      out.write("                                        <a href=\"session.jsp?id=");
       out.print(rs.getString(1));
       out.write("&dnipro=");
       out.print(rs.getString(5));
       out.write("\">\n");
-      out.write("                                        </a>\n");
+      out.write("                                            <i data-toggle=\"tooltip\" data-placement=\"left\" class=\"material-icons\" style=\"font-size: 15px; color: #000\" title=\"Agregar sesión\">timer</i></a>\n");
+      out.write("                                        <a href=\"editarrela.jsp?id=");
+      out.print(rs.getString(1));
+      out.write("\">\n");
+      out.write("                                            <i data-toggle=\"tooltip\" data-placement=\"top\" class=\"material-icons\" style=\"font-size: 15px; color: #000\" title=\"Editar\">edit</i></a>\n");
       out.write("                                        <a href=\"eliminarrela.jsp?id=");
       out.print(rs.getString(1));
       out.write("\" onclick=\"return eliminar()\">\n");
-      out.write("                                        </a>\n");
+      out.write("                                            <i data-toggle=\"tooltip\" data-placement=\"right\" class=\"material-icons\" style=\"font-size: 15px;color: #000\" title=\"Eliminar\">highlight_off</i></a>\n");
       out.write("                                    </td>\n");
-      out.write("                                </tr>\n");
-      out.write("                            </tbody>\n");
-      out.write("                ");
+      out.write("                                </tr>                      \n");
  
-}
-sta.close();
-rs.close();
-cnx.close();
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
     } catch (Exception e) {
-           }
+    }
 
       out.write("\n");
-      out.write("                            </table>\n");
+      out.write("                            </tbody>\n");
+      out.write("                        </table>\n");
       out.write("                        </div>\n");
+      out.write("                    </div>\n");
+      out.write("                        </div>\n");
+      out.write("   \n");
       out.write("                    </div> \n");
-      out.write("                </div>\n");
-      out.write("                </div>\n");
-      out.write("            <!--Footer-->\n");
-      out.write("            <div class=\"row\">\n");
-      out.write("                <div class=\"col\">\n");
-      out.write("                \n");
-      out.write("                </div>\n");
-      out.write("            </div>\n");
+      out.write("\n");
       out.write("        </div>\n");
       out.write("    </div>\n");
       out.write("    \n");
@@ -344,19 +329,19 @@ cnx.close();
       out.write("                <div class=\"container\">\n");
       out.write("                <!--Menú-->\n");
       out.write("                    <div class=\"row\">\n");
-      out.write("                        <div class=\"col-md-3\">\n");
+      out.write("                        <div class=\"col-md-6\">\n");
       out.write("                        <a style=\"text-decoration: none;color: #000;font-size: 13px;\" href=\"#popup4\" class=\"popup-link\" onclick = \"document.getElementById('light4').style.display='block';\">\n");
-      out.write("                            <i class=\"material-icons\" style=\"text-decoration: none;color: #000;\">description</i></a>\n");
+      out.write("                            <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"Registrar curso\" class=\"material-icons\" style=\"text-decoration: none;color: #000;margin-left: 50%\">description</i></a>\n");
       out.write("                    </div>\n");
       out.write("                       \n");
       out.write("                </div>\n");
       out.write("                <!--Contenido-->\n");
       out.write("                    <div class=\"row\">\n");
       out.write("                         <div class=\"col-md-12\">\n");
-      out.write("                            <div class=\"col-md-12\" style=\"margin-top: 3%;\">\n");
+      out.write("                            <div class=\"col-md-12\" style=\"margin-top: 0%;\">\n");
       out.write("                        <div class=\"table-responsive\" style=\"max-height: 340px;font-size: 12px;\">\n");
       out.write("                        <!--<table class=\"table table-hover\">-->\n");
-      out.write("                        <table id=\"example2\" class=\"display\" cellspacing=\"0\" width=\"100%\">\n");
+      out.write("                        <table id=\"example2\" class=\"display\" style=\"border: 1px solid #000\" cellspacing=\"0\" width=\"100%\">\n");
       out.write("                            <thead>\n");
       out.write("                                <tr>\n");
       out.write("                                    <th></th>                                 \n");
@@ -381,8 +366,8 @@ cnx.close();
       out.print(rs.getInt(1));
       out.write("&nombrecur=");
       out.print(rs.getString(2));
-      out.write("\" style=\"text-decoration: none;color:#000;\"><i class=\"material-icons\" style=\"font-size: 18px\">description</i></a></td>\n");
-      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\"><a href=\"assign.jsp?codcur=");
+      out.write("\" style=\"text-decoration: none;color:#000;\"><i class=\"material-icons\" style=\"font-size: 15px\"  data-toggle=\"tooltip\" data-placement=\"right\" title=\"Asignar docente\">description</i></a></td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\"><a href=\"#nav-profile?codcur=");
       out.print(rs.getInt(1));
       out.write("&nombrecur=");
       out.print(rs.getString(2));
@@ -399,15 +384,15 @@ cnx.close();
       out.write("                                        <a style=\"text-decoration: none;color: #000;\" href=\"inicio.jsp?dnipro=");
       out.print(rs.getString(1));
       out.write("#popup2\" onclick = \"document.getElementById('light2').style.display='block';\">\n");
-      out.write("                                            <i class=\"material-icons\" style=\"font-size: 18px\">toc</i></a>\n");
+      out.write("                                            <i class=\"material-icons\" style=\"font-size: 15px\"  data-toggle=\"tooltip\" data-placement=\"left\" title=\"Detalle\">toc</i></a>\n");
       out.write("                                        <a style=\"text-decoration: none;color: #000;\" href=\"editpro.jsp?dnipro=");
       out.print(rs.getString(1));
       out.write("\">\n");
-      out.write("                                            <i class=\"material-icons\" style=\"font-size: 18px;\">edit</i></a>\n");
+      out.write("                                            <i class=\"material-icons\" style=\"font-size: 15px;\"  data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\">edit</i></a>\n");
       out.write("                                        <a style=\"text-decoration: none;color: #000;\" href=\"eliminarpro.jsp?dnipro=");
       out.print(rs.getString(1));
       out.write("\" onclick=\"return eliminar()\">\n");
-      out.write("                                            <i class=\"material-icons\" style=\"font-size: 18px\">highlight_off</i></a>\n");
+      out.write("                                            <i class=\"material-icons\" style=\"font-size: 15px\"  data-toggle=\"tooltip\" data-placement=\"right\" title=\"Eliminar\">highlight_off</i></a>\n");
       out.write("                                    </td>\n");
       out.write("                                </tr>                      \n");
  
@@ -424,21 +409,266 @@ cnx.close();
       out.write("                        </div>\n");
       out.write("                    </div>\n");
       out.write("                        </div>\n");
+      out.write("   \n");
       out.write("                    </div>       \n");
-      out.write("                <!--Footer-->\n");
-      out.write("                    <div class=\"row\">\n");
-      out.write("                        <div class=\"col-md-12\">\n");
+      out.write("                            \n");
+      out.write("                            <div class=\"row\">\n");
+      out.write("                         <div class=\"col-md-12\">\n");
+      out.write("                            <div class=\"col-md-12\" style=\"margin-top: 3%;\">\n");
+      out.write("                        <div class=\"table-responsive\" style=\"max-height: 600px;font-size: 12px;\">\n");
+      out.write("                        <!--<table class=\"table table-hover\">-->\n");
+      out.write("                        <table id=\"example5\" class=\"display\" style=\"border: 1px solid #000\" cellspacing=\"0\" width=\"100%\">\n");
+      out.write("                            <thead>\n");
+      out.write("                                <tr>\n");
+      out.write("                                    <th></th>                                 \n");
+      out.write("                                    <th style=\"text-align: center\">Curso</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Inscritos</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Vacantes</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Disponibles</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Frecuencia</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Fecha Inicio</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Fecha Término</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Estado</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Lab</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Docente</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Opción</th>\n");
+      out.write("                                </tr>\n");
+      out.write("                            </thead>\n");
+      out.write("                            <tbody>\n");
+
+try {
+        Class.forName("com.mysql.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+        sta=cnx.createStatement();
+        rs=sta.executeQuery("select T1.id_registro,T1.cod_cur,T3.nombre_cur,T1.paga,T1.dni_pro,T2.nombre_pro,T2.apellidos_pro,T1.fechatini,T1.fechatfin,T1.esta,T1.labo,T3.vaca_cur,-sum(paga-vaca_cur),T1.frec FROM registro T1 INNER JOIN profesores T2 INNER JOIN cursos T3  ON T1.dni_pro = T2.dni_pro AND T1.cod_cur = T3.cod_cur group by T1.id_registro");
+        while (rs.next()){
+
+      out.write("\n");
+      out.write("                                <tr>\n");
+      out.write("                                    <td style=\"text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\"><a style=\"color: #000\"><i class=\"material-icons\" style=\"font-size: 15px\">description</i></a></td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;\">");
+      out.print(rs.getString(3));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;\">");
+      out.print(rs.getInt(4));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getInt(12));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getInt(13));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(14));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(8));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(9));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(10));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(11));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;\">");
+      out.print(rs.getString(7));
+      out.write(' ');
+      out.print(rs.getString(6));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">\n");
+      out.write("                                        <a href=\"session.jsp?id=");
+      out.print(rs.getString(1));
+      out.write("&dnipro=");
+      out.print(rs.getString(5));
+      out.write("\">\n");
+      out.write("                                            <i data-toggle=\"tooltip\" data-placement=\"left\" class=\"material-icons\" style=\"font-size: 15px; color: #000\" title=\"Agregar sesión\">timer</i></a>\n");
+      out.write("                                        <a href=\"editarrela.jsp?id=");
+      out.print(rs.getString(1));
+      out.write("\">\n");
+      out.write("                                            <i data-toggle=\"tooltip\" data-placement=\"top\" class=\"material-icons\" style=\"font-size: 15px; color: #000\" title=\"Editar\">edit</i></a>\n");
+      out.write("                                        <a href=\"eliminarrela.jsp?id=");
+      out.print(rs.getString(1));
+      out.write("\" onclick=\"return eliminar()\">\n");
+      out.write("                                            <i data-toggle=\"tooltip\" data-placement=\"right\" class=\"material-icons\" style=\"font-size: 15px;color: #000\" title=\"Eliminar\">highlight_off</i></a>\n");
+      out.write("                                    </td>\n");
+      out.write("                                </tr>                      \n");
+ 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
+    } catch (Exception e) {
+    }
+
+      out.write("\n");
+      out.write("                            </tbody>\n");
+      out.write("                        </table>\n");
       out.write("                        </div>\n");
-      out.write("                    \n");
-      out.write("                    </div>       \n");
+      out.write("                    </div>\n");
+      out.write("                        </div>\n");
+      out.write("   \n");
+      out.write("                    </div> \n");
+      out.write("     \n");
       out.write("                </div>\n");
       out.write("\n");
+      out.write("            </div>\n");
+      out.write("            <div class=\"tab-pane fade\" id=\"nav-contact\" role=\"tabpanel\" aria-labelledby=\"nav-contact-tab\">\n");
       out.write("\n");
+      out.write("                <div class=\"row\">\n");
+      out.write("                         <div class=\"col-md-12\">\n");
+      out.write("                            <div class=\"col-md-12\" style=\"margin-top: 3%;\">\n");
+      out.write("                        <div class=\"table-responsive\" style=\"max-height: 450px;font-size: 12px;\">\n");
+      out.write("                        <!--<table class=\"table table-hover\">-->\n");
+      out.write("                        <table id=\"example3\" class=\"display\" style=\"border: 1px solid #000\" cellspacing=\"0\" width=\"100%\">\n");
+      out.write("                            <thead>\n");
+      out.write("                                <tr>\n");
+      out.write("                                    <th style=\"text-align: center\">Docente</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Curso</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Hora Programada</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Hora Ingreso</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Dia</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Estado</th>\n");
+      out.write("                                </tr>\n");
+      out.write("                            </thead>\n");
+      out.write("                            <tbody>\n");
+
+    try {
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("select P.apellidos_pro,P.nombre_pro,C.nombre_cur,substring(I.horaingreso,1,11),substring(I.horaingreso,13,50),substring(S.horasalida,1,11),substring(S.horasalida,13,50),Se.horasini,Se.horasfin "
+            + "from ingreso I "
+            + "inner join salida S "
+            + "inner join sesion Se "
+            + "inner join registro R "
+            + "inner join cursos C "
+            + "inner join profesores P "
+            + "on I.id_ingreso=S.id_ingreso "
+            + "and Se.id_sesion=I.id_sesion "
+            + "and R.id_registro=Se.id_registro "
+            + "and R.dni_pro=P.dni_pro "
+            + "and R.cod_cur=C.cod_cur "
+            + "group by I.id_ingreso");
+    while (rs.next()){
+
       out.write("\n");
+      out.write("                                <tr>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(1));
+      out.write(',');
+      out.write(' ');
+      out.print(rs.getString(2));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(3));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(8));
+      out.write(" - ");
+      out.print(rs.getString(9));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(4));
+      out.write(" - ");
+      out.print(rs.getString(6));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(5));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\"><label style=\"color: blue\">Asistio</label></td>\n");
       out.write("\n");
+      out.write("                                </tr>                      \n");
+ 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
+    } catch (Exception e) {
+    }
+
+      out.write("\n");
+      out.write("                            </tbody>\n");
+      out.write("                        </table>\n");
+      out.write("                        </div>\n");
+      out.write("                    </div>\n");
+      out.write("                        </div>\n");
+      out.write("                </div>\n");
+      out.write("                            \n");
+      out.write("                            <div class=\"row\">\n");
+      out.write("                         <div class=\"col-md-12\">\n");
+      out.write("                            <div class=\"col-md-12\" style=\"margin-top: 3%;\">\n");
+      out.write("                        <div class=\"table-responsive\" style=\"max-height: 450px;font-size: 12px;\">\n");
+      out.write("                        <!--<table class=\"table table-hover\">-->\n");
+      out.write("                        <table id=\"example4\" class=\"display\" style=\"border: 1px solid #000\" cellspacing=\"0\" width=\"100%\">\n");
+      out.write("                            <thead>\n");
+      out.write("                                <tr>\n");
+      out.write("                                    <th style=\"text-align: center\">Fecha</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Hora</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Curso</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Docente</th>\n");
+      out.write("                                    <th style=\"text-align: center\">Estado</th>\n");
+      out.write("\n");
+      out.write("                                </tr>\n");
+      out.write("                            </thead>\n");
+      out.write("                            <tbody>\n");
+
+    try {
+    Class.forName("com.mysql.jdbc.Driver");
+    cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
+    sta=cnx.createStatement();
+    rs=sta.executeQuery("select S.id_sesion,S.fecha,S.horasini,S.horasfin,C.nombre_cur,P.nombre_pro,P.apellidos_pro "
+            + "from sesion S "
+            + "inner join registro R "
+            + "inner join profesores P "
+            + "inner join cursos C "
+            + "on S.id_registro=R.id_registro "
+            + "and R.dni_pro=P.dni_pro "
+            + "and R.cod_cur=C.cod_cur "
+            + "where S.id_sesion "
+            + "not in (select I.id_sesion from ingreso I)");
+    while (rs.next()){
+
+      out.write("\n");
+      out.write("                                <tr>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(2));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(3));
+      out.write(" - ");
+      out.print(rs.getString(4));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(5));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\">");
+      out.print(rs.getString(7));
+      out.write(',');
+      out.write(' ');
+      out.print(rs.getString(6));
+      out.write("</td>\n");
+      out.write("                                    <td style=\"padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center\"><label style=\"color: red\">Faltó</label></td>\n");
+      out.write("                                </tr>                        \n");
+ 
+    }
+    sta.close();
+    rs.close();
+    cnx.close();
+    } catch (Exception e) {
+    }
+
+      out.write("\n");
+      out.write("                            </tbody>\n");
+      out.write("                        </table>\n");
+      out.write("                        </div>\n");
+      out.write("                    </div>\n");
+      out.write("                        </div>\n");
+      out.write("                </div>\n");
       out.write("\n");
       out.write("            </div>\n");
-      out.write("  <div class=\"tab-pane fade\" id=\"nav-contact\" role=\"tabpanel\" aria-labelledby=\"nav-contact-tab\">...</div>\n");
       out.write("</div>\n");
       out.write("\n");
       out.write("<div class=\"modal-wrapper\" id=\"popup\">\n");
@@ -995,20 +1225,20 @@ cnx.close();
       out.write("    <div style=\"position: relative;margin:10% auto;padding:30px 30px;background-color: #fafafa;color:#333;border-radius: 3px;width:80%;\">\n");
       out.write("        <div class=\"row\" id=\"light4\" style=\"display: none;\">\n");
       out.write("            <div class=\"col-md-12\">\n");
-      out.write("                <form action=\"docentes_admin\" name=\"holapro\">\n");
+      out.write("                <form action=\"cursos_admin\" name=\"holapro\">\n");
       out.write("                    <div class=\"row\">\n");
       out.write("                        <div class=\"col-md-12 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"\" placeholder=\"Curso\" required  style=\"width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF;\">\n");
+      out.write("                            <input type=\"text\" name=\"nombrecur\" placeholder=\"Curso\" required  style=\"width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF;\">\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-2 mb-2\">\n");
-      out.write("                            <input type=\"number\" name=\"\" placeholder=\"Vacantes\" required style=\"width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF\">\n");
+      out.write("                            <input type=\"number\" name=\"vaca\" placeholder=\"Vacantes\" required style=\"width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF\">\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-2 mb-2\">\n");
-      out.write("                            <input type=\"text\" name=\"\" placeholder=\"Costo S/.\" required style=\"width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF\">\n");
+      out.write("                            <input type=\"text\" name=\"cost\" placeholder=\"Costo S/.\" required style=\"width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF\">\n");
       out.write("                        </div>\n");
       out.write("                       \n");
       out.write("                        <div class=\"col-md-8 mb-2\">\n");
-      out.write("                            <textarea name=\"\" style=\"width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF\" placeholder=\"Descripción\"></textarea>\n");
+      out.write("                            <textarea name=\"desc\" style=\"width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF\" placeholder=\"Descripción\"></textarea>\n");
       out.write("                        </div>\n");
       out.write("        \n");
       out.write("\n");
@@ -1086,6 +1316,99 @@ cnx.close();
       out.write("<script type=\"text/javascript\">\n");
       out.write("    $(document).ready(function() {\n");
       out.write("    $('#example2').DataTable({\n");
+      out.write("        \"language\": {\n");
+      out.write("    \"sProcessing\":     \"Procesando...\",\n");
+      out.write("    \"sLengthMenu\":     \"Mostrar _MENU_ registros\",\n");
+      out.write("    \"sZeroRecords\":    \"No se encontraron resultados\",\n");
+      out.write("    \"sEmptyTable\":     \"Ningún dato disponible en esta tabla\",\n");
+      out.write("    \"sInfo\":           \"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros\",\n");
+      out.write("    \"sInfoEmpty\":      \"Mostrando registros del 0 al 0 de un total de 0 registros\",\n");
+      out.write("    \"sInfoFiltered\":   \"(filtrado de un total de _MAX_ registros)\",\n");
+      out.write("    \"sInfoPostFix\":    \"\",\n");
+      out.write("    \"sSearch\":         \"Buscar:\",\n");
+      out.write("    \"sUrl\":            \"\",\n");
+      out.write("    \"sInfoThousands\":  \",\",\n");
+      out.write("    \"sLoadingRecords\": \"Cargando...\",\n");
+      out.write("    \"oPaginate\": {\n");
+      out.write("        \"sFirst\":    \"Primero\",\n");
+      out.write("        \"sLast\":     \"Último\",\n");
+      out.write("        \"sNext\":     \"Siguiente\",\n");
+      out.write("        \"sPrevious\": \"Anterior\"\n");
+      out.write("    },\n");
+      out.write("    \"oAria\": {\n");
+      out.write("        \"sSortAscending\":  \": Activar para ordenar la columna de manera ascendente\",\n");
+      out.write("        \"sSortDescending\": \": Activar para ordenar la columna de manera descendente\"\n");
+      out.write("    }\n");
+      out.write("}\n");
+      out.write("    } );\n");
+      out.write("} );\n");
+      out.write("</script>\n");
+      out.write("\n");
+      out.write("<script type=\"text/javascript\">\n");
+      out.write("    $(document).ready(function() {\n");
+      out.write("    $('#example3').DataTable({\n");
+      out.write("        \"language\": {\n");
+      out.write("    \"sProcessing\":     \"Procesando...\",\n");
+      out.write("    \"sLengthMenu\":     \"Mostrar _MENU_ registros\",\n");
+      out.write("    \"sZeroRecords\":    \"No se encontraron resultados\",\n");
+      out.write("    \"sEmptyTable\":     \"Ningún dato disponible en esta tabla\",\n");
+      out.write("    \"sInfo\":           \"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros\",\n");
+      out.write("    \"sInfoEmpty\":      \"Mostrando registros del 0 al 0 de un total de 0 registros\",\n");
+      out.write("    \"sInfoFiltered\":   \"(filtrado de un total de _MAX_ registros)\",\n");
+      out.write("    \"sInfoPostFix\":    \"\",\n");
+      out.write("    \"sSearch\":         \"Buscar:\",\n");
+      out.write("    \"sUrl\":            \"\",\n");
+      out.write("    \"sInfoThousands\":  \",\",\n");
+      out.write("    \"sLoadingRecords\": \"Cargando...\",\n");
+      out.write("    \"oPaginate\": {\n");
+      out.write("        \"sFirst\":    \"Primero\",\n");
+      out.write("        \"sLast\":     \"Último\",\n");
+      out.write("        \"sNext\":     \"Siguiente\",\n");
+      out.write("        \"sPrevious\": \"Anterior\"\n");
+      out.write("    },\n");
+      out.write("    \"oAria\": {\n");
+      out.write("        \"sSortAscending\":  \": Activar para ordenar la columna de manera ascendente\",\n");
+      out.write("        \"sSortDescending\": \": Activar para ordenar la columna de manera descendente\"\n");
+      out.write("    }\n");
+      out.write("}\n");
+      out.write("    } );\n");
+      out.write("} );\n");
+      out.write("</script>\n");
+      out.write("\n");
+      out.write("<script type=\"text/javascript\">\n");
+      out.write("    $(document).ready(function() {\n");
+      out.write("    $('#example4').DataTable({\n");
+      out.write("        \"language\": {\n");
+      out.write("    \"sProcessing\":     \"Procesando...\",\n");
+      out.write("    \"sLengthMenu\":     \"Mostrar _MENU_ registros\",\n");
+      out.write("    \"sZeroRecords\":    \"No se encontraron resultados\",\n");
+      out.write("    \"sEmptyTable\":     \"Ningún dato disponible en esta tabla\",\n");
+      out.write("    \"sInfo\":           \"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros\",\n");
+      out.write("    \"sInfoEmpty\":      \"Mostrando registros del 0 al 0 de un total de 0 registros\",\n");
+      out.write("    \"sInfoFiltered\":   \"(filtrado de un total de _MAX_ registros)\",\n");
+      out.write("    \"sInfoPostFix\":    \"\",\n");
+      out.write("    \"sSearch\":         \"Buscar:\",\n");
+      out.write("    \"sUrl\":            \"\",\n");
+      out.write("    \"sInfoThousands\":  \",\",\n");
+      out.write("    \"sLoadingRecords\": \"Cargando...\",\n");
+      out.write("    \"oPaginate\": {\n");
+      out.write("        \"sFirst\":    \"Primero\",\n");
+      out.write("        \"sLast\":     \"Último\",\n");
+      out.write("        \"sNext\":     \"Siguiente\",\n");
+      out.write("        \"sPrevious\": \"Anterior\"\n");
+      out.write("    },\n");
+      out.write("    \"oAria\": {\n");
+      out.write("        \"sSortAscending\":  \": Activar para ordenar la columna de manera ascendente\",\n");
+      out.write("        \"sSortDescending\": \": Activar para ordenar la columna de manera descendente\"\n");
+      out.write("    }\n");
+      out.write("}\n");
+      out.write("    } );\n");
+      out.write("} );\n");
+      out.write("</script>\n");
+      out.write("\n");
+      out.write("<script type=\"text/javascript\">\n");
+      out.write("    $(document).ready(function() {\n");
+      out.write("    $('#example5').DataTable({\n");
       out.write("        \"language\": {\n");
       out.write("    \"sProcessing\":     \"Procesando...\",\n");
       out.write("    \"sLengthMenu\":     \"Mostrar _MENU_ registros\",\n");

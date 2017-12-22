@@ -88,6 +88,15 @@ horasalida varchar(50) NOT NULL,
 PRIMARY KEY  (id_salida));
 ALTER TABLE salida ADD FOREIGN KEY(id_ingreso) REFERENCES ingreso(id_ingreso);
 
+select * from 
+ingresos I 
+inner join salida S
+where 
+
+
+
+
+
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Administración de Proyectos con MS Project',50,350,'');
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Elaboración de Balanced Scorecard en EXCEL',50,350,'');
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Macros en Excel para el Análisis de la Información Estadística ',50,350,'');
@@ -205,10 +214,12 @@ INSERT INTO `profesores` (`dni_pro`,`nombre_pro`,`apellidos_pro`,`tele_pro`,`dir
 
 
 
-select if(t1.horaingreso!='' or t1.horaingreso!=null,t1.horaingreso,'aaaa'),if(t2.horasalida!='' or t2.horasalida!=null,t2.horasalida,'bbb') 
-from ingreso t1
-inner join salida t2
-on t1.id_ingreso=t2.id_ingreso
+
+
+
+
+
+
 
 
 
