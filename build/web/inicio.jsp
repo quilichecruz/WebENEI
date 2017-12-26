@@ -165,7 +165,7 @@ try {
                 </div>--%>  
                 <div class="col-md-12">
                     <div class="col-md-12" style="margin-top: 0%;">
-                        <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
+                        <div class="table-responsive" style="max-height: 340px;font-size: 14px;">
                         <!--<table class="table table-hover">-->
                         <table id="example" class="display" style="border: 1px solid #000;" cellspacing="0" width="100%">
                             <thead>
@@ -188,14 +188,15 @@ try {
     while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?dnipro=<%=rs.getString(1)%>&nombrepro=<%=rs.getString(2)%>&apellidospro=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;"><i data-toggle="tooltip" data-placement="right" title="Asignar curso" class="material-icons" style="font-size: 15px;">account_circle</i></a></td>
+                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?dnipro=<%=rs.getString(1)%>&nombrepro=<%=rs.getString(2)%>&apellidospro=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;"><i data-toggle="tooltip" data-placement="right" title="Asignar curso a <%=rs.getString(3)%>, <%=rs.getString(2)%>" class="material-icons" style="font-size: 15px;">account_circle</i></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';"><%=rs.getString(3)%>, <%=rs.getString(2)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(15)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(9)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(8)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
                                         <a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';">
-                                            <i class="material-icons" data-toggle="tooltip" data-placement="left" style="font-size: 15px" title="Detalle">portrait</i></a>
+                                            <i class="material-icons" data-toggle="tooltip" data-placement="left" style="font-size: 15px" title="Detalle">zoom_in
+</i></a>
                                         <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
                                             <i class="material-icons" data-toggle="tooltip" data-placement="top" style="font-size: 15px;" title="Editar">edit</i></a>
                                         <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
@@ -220,12 +221,12 @@ try {
           <div class="row">
                          <div class="col-md-12">
                             <div class="col-md-12" style="margin-top: 3%;">
-                        <div class="table-responsive" style="font-size: 12px;">
+                        <div class="table-responsive" style="font-size: 14px;">
                         <!--<table class="table table-hover">-->
                         <table id="example1" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th></th>                                 
+                                    <th></th>
                                     <th style="text-align: center">Curso</th>
                                     <th style="text-align: center">Inscritos</th>
                                     <th style="text-align: center">Vacantes</th>
@@ -249,17 +250,17 @@ try {
         while (rs.next()){
 %>
                                 <tr>
-                                    <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="color: #000"><i class="material-icons" style="font-size: 15px">description</i></a></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
+                                    <td style="text-align: center;"><a style="color: #000"><i class="material-icons" style="font-size: 15px">description</i></a></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><a href="assign.jsp?codcur=<%=rs.getString(2)%>&nombrecur=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;" title="Asignar <%=rs.getString(3)%> a otro docente" data-toggle="tooltip" data-placement="right"><%=rs.getString(3)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(4)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(13)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;color: red"><%=rs.getInt(13)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;"><%=rs.getString(14)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(8)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(7)%>, <%=rs.getString(6)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><a href="assign.jsp?dnipro=<%=rs.getString(5)%>&apellidospro=<%=rs.getString(7)%>&nombrepro=<%=rs.getString(6)%>" style="text-decoration: none;color:#000;" title="Asignar otro curso a este docente" data-toggle="tooltip" data-placement="left"><%=rs.getString(7)%>, <%=rs.getString(6)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center">
                                         <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
                                             <i data-toggle="tooltip" data-placement="left" class="material-icons" style="font-size: 15px; color: #000" title="Agregar sesión">timer</i></a>
@@ -303,7 +304,7 @@ try {
                     <div class="row">
                          <div class="col-md-12">
                             <div class="col-md-12" style="margin-top: 0%;">
-                        <div class="table-responsive" style="max-height: 340px;font-size: 12px;">
+                        <div class="table-responsive" style="max-height: 340px;font-size: 14px;">
                         <!--<table class="table table-hover">-->
                         <table id="example2" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>
@@ -331,7 +332,7 @@ try {
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
                                         <a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';">
-                                            <i class="material-icons" style="font-size: 15px"  data-toggle="tooltip" data-placement="left" title="Detalle">toc</i></a>
+                                            <i class="material-icons" style="font-size: 15px"  data-toggle="tooltip" data-placement="left" title="Detalle">zoom_in</i></a>
                                         <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
                                             <i class="material-icons" style="font-size: 15px;"  data-toggle="tooltip" data-placement="top" title="Editar">edit</i></a>
                                         <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
@@ -357,7 +358,7 @@ try {
                             <div class="row">
                          <div class="col-md-12">
                             <div class="col-md-12" style="margin-top: 3%;">
-                        <div class="table-responsive" style="font-size: 12px;">
+                        <div class="table-responsive" style="font-size: 14px;">
                         <!--<table class="table table-hover">-->
                         <table id="example5" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>
@@ -387,7 +388,7 @@ try {
 %>
                                 <tr>
                                     <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a style="color: #000"><i class="material-icons" style="font-size: 15px">description</i></a></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><a href="assign.jsp?codcur=<%=rs.getString(2)%>&nombrecur=<%=rs.getString(3)%>" style="text-decoration: none;color:#000;" title="Asignar <%=rs.getString(3)%> a otro docente" data-toggle="tooltip" data-placement="right"><%=rs.getString(3)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;"><%=rs.getInt(4)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getInt(12)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;color: red"><%=rs.getInt(13)%></td>
@@ -396,7 +397,7 @@ try {
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(9)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(10)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><%=rs.getString(11)%></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;"><%=rs.getString(7)%>, <%=rs.getString(6)%></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center"><a href="assign.jsp?dnipro=<%=rs.getString(5)%>&apellidospro=<%=rs.getString(7)%>&nombrepro=<%=rs.getString(6)%>" style="text-decoration: none;color:#000;" title="Asignar otro curso a este docente" data-toggle="tooltip" data-placement="left"><%=rs.getString(7)%>, <%=rs.getString(6)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center">
                                         <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
                                             <i data-toggle="tooltip" data-placement="left" class="material-icons" style="font-size: 15px; color: #000" title="Agregar sesión">timer</i></a>
@@ -430,7 +431,7 @@ try {
                 <div class="row">
                          <div class="col-md-12">
                             <div class="col-md-12" style="margin-top: 3%;">
-                        <div class="table-responsive" style="max-height: 450px;font-size: 12px;">
+                        <div class="table-responsive" style="max-height: 450px;font-size: 14px;">
                         <!--<table class="table table-hover">-->
                         <table id="example3" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>
@@ -491,7 +492,7 @@ try {
                             <div class="row">
                          <div class="col-md-12">
                             <div class="col-md-12" style="margin-top: 3%;">
-                        <div class="table-responsive" style="max-height: 450px;font-size: 12px;">
+                        <div class="table-responsive" style="max-height: 450px;font-size: 14px;">
                         <!--<table class="table table-hover">-->
                         <table id="example4" class="display" style="border: 1px solid #000" cellspacing="0" width="100%">
                             <thead>

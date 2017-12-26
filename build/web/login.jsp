@@ -23,7 +23,7 @@
                 <div class="col s12 m6 offset-m3">
                     <div class="card">
                         <div class="card-action center">
-                            <img class="imglogin" alt="" src="media/logo.png">
+                            <img class="imglogin" alt="" src="media/logocolor.png">
                         </div>
                         <div class="card-content">
                             <form name="form_login" action="session_admin" method="post" autocomplete="off" id="login" onsubmit="validate()">
