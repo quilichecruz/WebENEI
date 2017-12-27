@@ -14,7 +14,6 @@
     String nombrepro= request.getParameter("nombrepro");
     String id=request.getParameter("id");
     String nombrecur= request.getParameter("nombrecur");
-
 %>
 <html>
     <head>
@@ -195,9 +194,8 @@ try {
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(8)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
                                         <a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';">
-                                            <i class="material-icons" data-toggle="tooltip" data-placement="left" style="font-size: 15px" title="Detalle">zoom_in
-</i></a>
-                                        <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
+                                            <i class="material-icons" data-toggle="tooltip" data-placement="left" style="font-size: 15px" title="Detalle">zoom_in</i></a>
+                                        <a style="text-decoration: none;color: #000;" href="edit.jsp?dnipro=<%=rs.getString(1)%>">
                                             <i class="material-icons" data-toggle="tooltip" data-placement="top" style="font-size: 15px;" title="Editar">edit</i></a>
                                         <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
                                             <i class="material-icons" data-toggle="tooltip" data-placement="right" style="font-size: 15px" title="Eliminar">highlight_off</i></a>
@@ -331,9 +329,9 @@ try {
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
-                                        <a style="text-decoration: none;color: #000;" href="inicio.jsp?dnipro=<%=rs.getString(1)%>#popup2" onclick = "document.getElementById('light2').style.display='block';">
+                                        <a style="text-decoration: none;color: #000;" href="#">
                                             <i class="material-icons" style="font-size: 15px"  data-toggle="tooltip" data-placement="left" title="Detalle">zoom_in</i></a>
-                                        <a style="text-decoration: none;color: #000;" href="editpro.jsp?dnipro=<%=rs.getString(1)%>">
+                                            <a style="text-decoration: none;color: #000;" href="edit_curso.jsp?codcur=<%=rs.getInt(1)%>">
                                             <i class="material-icons" style="font-size: 15px;"  data-toggle="tooltip" data-placement="top" title="Editar">edit</i></a>
                                         <a style="text-decoration: none;color: #000;" href="eliminarpro.jsp?dnipro=<%=rs.getString(1)%>" onclick="return eliminar()">
                                             <i class="material-icons" style="font-size: 15px"  data-toggle="tooltip" data-placement="right" title="Eliminar">highlight_off</i></a>
@@ -498,7 +496,7 @@ try {
                             <thead>
                                 <tr>
                                     <th style="text-align: center">Fecha</th>
-                                    <th style="text-align: center">Hora</th>
+                                    <th style="text-align: center">Hora Programada</th>
                                     <th style="text-align: center">Curso</th>
                                     <th style="text-align: center">Docente</th>
                                     <th style="text-align: center">Estado</th>
@@ -549,7 +547,7 @@ try {
 </div>
 
 <div class="modal-wrapper" id="popup">
-    <div style="position: relative;margin:10% auto;padding:30px 30px;background-color: #fafafa;color:#333;border-radius: 3px;width:80%;">
+    <div style="position: relative;margin:10% auto;padding:30px 30px;background-color: #fafafa;color:#333;border-radius: 3px;width:90%;">
         <div class="row" id="light" style="display: none;">
             <div class="col-md-12">
                 <form action="docentes_admin" name="holapro">
@@ -839,7 +837,7 @@ try {
                         %>  
                         </select>
 
-                        <button onclick="return registrar()" style="margin-top: 10px;margin-left: 92%;color: #fafafa;background: #007AFF;border: 0px;border-radius: 3px;padding: 10px 10px 10px 10px;font-size: 10px;">GRABAR</button>
+                        <button onclick="return registrar()" style="margin-top: 10px;margin-left: 92%;color: #fafafa;background: #007AFF;border: 0px;border-radius: 3px;">Grabar</button>
                     </div>  
                 </form>
             </div>
@@ -853,7 +851,7 @@ try {
         <div class="row" id="light2" style="display: block;">
             <div class="col-m12">
                 <div class="table-responsive">
-                    <table class="table table-hover" style="font-size: 12px;">    
+                    <table class="table table-hover" style="font-size: 14px;">    
                         <thead>
                             <tr>
                                 <th style="text-align: center;">DNI</th>
@@ -887,7 +885,7 @@ try {
                                 <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(9)%></td>
                                 <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;"><%=rs.getString(8)%></td>
                                 <td style="text-align: center;padding: 10px 5px 5px 5px;margin: 10px 5px 5px 5px;">
-                                    <a href="#" style="text-decoration: none; color: #000;"><i class="material-icons">edit</i></a>
+                                    <a href="edit.jsp?dnipro=<%=rs.getString(1)%>" style="text-decoration: none; color: #000;"><i class="material-icons">edit</i></a>
                                     <a href="#" style="text-decoration: none; color: #000;"><i class="material-icons">highlight_off</i></a>
                                 </td>
                             </tr>
@@ -948,31 +946,44 @@ cnx.close();
     <div style="position: relative;margin:10% auto;padding:30px 30px;background-color: #fafafa;color:#333;border-radius: 3px;width:80%;">
         <div class="row" id="light4" style="display: none;">
             <div class="col-md-12">
-                <form action="cursos_admin" name="holapro">
-                    <div class="row">
-                        <div class="col-md-12 mb-2">
-                            <input type="text" name="nombrecur" placeholder="Curso" required  style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF;">
+                <form action="cursos_admin" name="holapro" class="form-horizontal">
+                    <fieldset>
+                    <legend style="font-weight: 600">NUEVO CURSO</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="nombrecur">CURSO</label>
+                            <input name="nombrecur" type="text" class="form-control" id="nombrecur" required="">
                         </div>
-                        <div class="col-md-2 mb-2">
-                            <input type="number" name="vaca" placeholder="Vacantes" required style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF">
+                        <div class="form-group col-md-6">
+                            <label for="vaca">VACANTES</label>
+                            <input name="vaca" type="number" class="form-control" id="vaca" required="">
                         </div>
-                        <div class="col-md-2 mb-2">
-                            <input type="text" name="cost" placeholder="Costo S/." required style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF">
+                        <div class="form-group col-md-6">
+                            <label for="cost">COSTO S/.</label>
+                            <input name="cost" type="text" class="form-control" id="cost" required="">
                         </div>
-                       
-                        <div class="col-md-8 mb-2">
-                            <textarea name="desc" style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;font-size: 13px;outline-color: #007AFF" placeholder="Descripción"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="desc">DESCRIPCIÓN</label>
+                            <textarea name="desc" class="form-control" id="desc"></textarea>
                         </div>
-        
-
-                        <button onclick="return registrar()" style="margin-top: 10px;margin-left: 92%;color: #fafafa;background: #007AFF;border: 0px;border-radius: 3px;padding: 10px 10px 10px 10px;font-size: 10px;">GRABAR</button>
-                    </div>  
+                    </div> 
+                    <div class="form-row">
+                        <div class="form-group col-md-12" style="text-align: right">
+                        <button onclick="return registrar()" class="btn btn-primary" type="submit">Grabar</button>
+                    </div>
+                    </div>
+                    </fieldset>
                 </form>
             </div>
         </div>
-                        <a class="popup-cerrar4" href="#" title="Cerrar" onclick = "document.getElementById('light4').style.display='none';">x</a>
+              <a class="popup-cerrar4" href="#" title="Cerrar" onclick = "document.getElementById('light4').style.display='none';">x</a>
     </div>
 </div> 
+
+                    
+                    
                     
 <script type="text/javascript">
     $(document).ready(function() {

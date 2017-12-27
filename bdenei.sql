@@ -88,13 +88,30 @@ horasalida varchar(50) NOT NULL,
 PRIMARY KEY  (id_salida));
 ALTER TABLE salida ADD FOREIGN KEY(id_ingreso) REFERENCES ingreso(id_ingreso);
 
-select * from 
-ingresos I 
-inner join salida S
-where 
+
+select T1.id_registro,T1.cod_cur,T3.nombre_cur,
+T1.paga,T1.dni_pro,T2.nombre_pro,T2.apellidos_pro,
+T1.fechatini,T1.fechatfin,T1.esta,T1.labo,T3.vaca_cur,
+-sum(paga-vaca_cur),T1.frec,T2.apellidos_pro,T2.nombre_pro
+FROM registro T1 
+INNER JOIN profesores T2 
+INNER JOIN cursos T3
+ON T1.dni_pro = T2.dni_pro 
+AND T1.cod_cur = T3.cod_cur 
+group by T1.id_registro
 
 
 
+select if(I.id_ingreso='' or I.id_ingreso=null,'F','A'),S.id_sesion
+from ingreso I
+inner join sesion S
+on I.id_sesion=S.id_sesion;
+
+select S.id_sesion,I.id_sesion
+from sesion S
+inner join ingreso I
+on I.id_sesion=S.id_sesion
+group by S.id_sesion;
 
 
 INSERT INTO `cursos` (`nombre_cur`,`vaca_cur`,`cost`,`desc_cur`) VALUES ('Administración de Proyectos con MS Project',50,350,'');

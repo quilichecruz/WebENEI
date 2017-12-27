@@ -27,6 +27,8 @@
         <script type="text/javascript" src="calendario_dw/calendario_dw.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+        
         <script type="text/javascript">
             $(document).ready(function(){
                $(".campomyfecha").calendarioDW();
@@ -35,8 +37,9 @@
                $(".campomyfecha2").calendarioDW();
             });
         </script>
+        
     </head>
-    <body style="font-size: 11px;">
+    <body style="font-family: 'Dosis', sans-serif;">
         <nav class="nav nav-tabs" id="myTab">
             <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-report" role="tab" aria-controls="nav-report" aria-selected="false" style="color: #000;font-size: 13px;"><img src="media/logocolor.png" alt="" style="width: 45px;height: auto;text-align: center;"></a>
         </nav>
@@ -45,14 +48,14 @@
         <br>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <form action="relacion_admin" method="post" class="form-horizontal" >
                             <fieldset>
-                                <legend></legend>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="selectbasic">Docente</label>
-                                        <div class="col-md-8">
-                                            <select id="selectbasic" name="dnipro" class="form-control" style="font-size: 12px;" required>
+                                <legend style="font-weight: 600">ASIGNAR</legend>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="dnipro">DOCENTE</label>
+                                        <select id="dnipro" name="dnipro" class="form-control" required="">
                                                 <option value="<%=dnipro%>"><%=dnipro%> <%=apellidospro%> <%=nombrepro%></option>  
             <%
                     Connection cnx=null;
@@ -75,12 +78,11 @@
                        }
             %>  
                                             </select>
-                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="selectbasic">Curso</label>
-                                        <div class="col-md-8">
-                                            <select id="selectbasic" name="codcur" class="form-control" style="font-size: 12px;" required>
+                                            
+                                    <div class="form-group col-md-12">
+                                        <label for="codcur">CURSO</label>
+                                        <select id="codcur" name="codcur" class="form-control" required="">
                                                 <option value="<%=codcur%>"><%=nombrecur%></option>
             <%
                 try {
@@ -100,65 +102,66 @@
                        }
             %>  
                                             </select>
-                                        </div>
+                                    </div>        
+                                    
+                                </div>
+                                            
+                                            
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="frec">FRECUENCIA</label>
+                                        <input name="frec" type="text" class="form-control" id="frec">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="textinput">Frecuencia</label>  
-                                        <div class="col-md-8">
-                                            <input id="textinput" name="frec" type="text" class="form-control input-md" style="font-size: 12px;">
-                                        </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="fechatini">FECHA INICIO</label>
+                                        <input name="fechatini" type="text" class="form-control campomyfecha" id="fechatini" required="">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="textinput">Fecha de inicio</label>  
-                                        <div class="col-md-4">
-                                            <input id="textinput" name="fechatini" type="text" class="form-control input-md campomyfecha" style="font-size: 12px;" required>
-                                        </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="fechatfin">FECHA TÉRMINO</label>
+                                        <input name="fechatfin" type="text" class="form-control campomyfecha" id="fechatfin" required="">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="textinput">Fecha término</label>  
-                                        <div class="col-md-4">
-                                            <input id="textinput" name="fechatfin" type="text" class="form-control input-md campomyfecha" style="font-size: 12px;" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="selectbasic">Estado</label>
-                                        <div class="col-md-4">
-                                            <select id="selectbasic" name="esta" class="form-control" style="font-size: 12px;">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="esta">ESTADO</label>
+                                            <select id="esta" name="esta" class="form-control">
                                                 <option value="Por Iniciar">Por Iniciar</option>
                                                 <option value="En Ejecucion">En Ejecución</option>
                                                 <option value="Finalizo">Finalizó</option>
-                                            </select>
-                                        </div>
+                                            </select>                                    
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="selectbasic">Laboratorio</label>
-                                        <div class="col-md-4">
-                                            <select id="selectbasic" name="labo" class="form-control" style="font-size: 12px;">
+                                    <div class="form-group col-md-12">
+                                        <label for="labo">LABORATORIO</label>
+                                            <select id="labo" name="labo" class="form-control">
                                                 <option value="Sin Asignar">Sin Asignar</option>
                                                 <option value="Lab 01">LAB 01</option>
                                                 <option value="Lab 02">LAB 02</option>
                                                 <option value="Lab 03">LAB 03</option>
                                                 <option value="Lab 04">LAB 04</option>
                                                 <option value="Lab 05">LAB 05</option>
-                                            </select>
-                                        </div>
+                                            </select>                                   
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="textinput">Inscritos</label>  
-                                        <div class="col-md-4">
-                                            <input id="textinput" name="paga" type="number" class="form-control input-md" value="0" style="font-size: 12px;">
-                                      </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="paga">ALUMNOS INSCRITOS</label>
+                                        <input name="paga" type="number" class="form-control" id="paga" value="0">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label" for="textinput"></label>  
-                                        <div class="col-md-4">
-                                            <button id="singlebutton" name="singlebutton" class="btn btn-primary" style="padding: 10px 10px 10px 10px;font-size: 10px;">GRABAR</button>
-                                        </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12" style="text-align: right">
+                                        <button class="btn btn-primary" type="submit">Grabar</button>
                                     </div>
+                                </div>  
                             </fieldset>
                         </form>
                         </div>
-            <div class="col-md-4">
+                                            
+<div class="col-md-5">
 <%
     try {
         Class.forName("com.mysql.jdbc.Driver");
@@ -201,17 +204,19 @@ cnx.close();
                         </div>
 
             <div class="col-md-3">
+                <a href="inicio.jsp?dnipro=<%=dnipro%>" style="color: #000;text-decoration: none;"><i title="Volver a inicio" class="material-icons" style="padding-bottom: 5%;margin-left: 100%;font-size: 30px;">reply_all
+</i></a>
 <%
     try {
         Class.forName("com.mysql.jdbc.Driver");
         cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdenei?user=root&password=root");
         sta=cnx.createStatement();
-        rs=sta.executeQuery("select if(c1 !='null',c1,''), if(c2 !='null',c2,''),"
-                    + "if(c3 !='null',c3,''), if(c4 !='null',c4,''),"
-                    + "if(c5 !='null',c5,''), if(c6 !='null',c6,''),"
-                    + "if(c7 !='null',c7,''), if(c8 !='null',c8,''),"
-                    + "if(c9 !='null',c9,''), if(c10 !='null',c10,''),"
-                    + "if(c11 !='null',c11,''), if(c12 !='null',c12,'') from profesores"
+        rs=sta.executeQuery("select if(c1 !='null',c1,'ninguna'), if(c2 !='null',c2,'ninguna'),"
+                    + "if(c3 !='null',c3,'ninguna'), if(c4 !='null',c4,'ninguna'),"
+                    + "if(c5 !='null',c5,'ninguna'), if(c6 !='null',c6,'ninguna'),"
+                    + "if(c7 !='null',c7,'ninguna'), if(c8 !='null',c8,'ninguna'),"
+                    + "if(c9 !='null',c9,'ninguna'), if(c10 !='null',c10,'ninguna'),"
+                    + "if(c11 !='null',c11,'ninguna'), if(c12 !='null',c12,'ninguna') from profesores"
                 + " where dni_pro="+dnipro);
         while (rs.next()){
 %>
@@ -259,16 +264,14 @@ cnx.close();
     } catch (Exception e) {
            }
 %>   
-                            
+
+      
                         </div>
 
 
                     </div>
                 </div>
-            
-                <div class="col-md-12">
-                    <a href="inicio.jsp?dnipro=<%=dnipro%>" style="color: #000;text-decoration: none;"><i class="material-icons" style="margin-left: 90%;font-size: 30px;">arrow_back</i></a>
-                </div>
+
             </div>                           
         </div>
     </body>
