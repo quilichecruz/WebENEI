@@ -262,7 +262,7 @@ try {
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center">
                                         <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
                                             <i data-toggle="tooltip" data-placement="left" class="material-icons" style="font-size: 15px; color: #000" title="Agregar sesión">timer</i></a>
-                                        <a href="editarrela.jsp?id=<%=rs.getString(1)%>">
+                                            <a href="edit_rela.jsp?id=<%=rs.getString(1)%>">
                                             <i data-toggle="tooltip" data-placement="top" class="material-icons" style="font-size: 15px; color: #000" title="Editar">edit</i></a>
                                         <a href="eliminarrela.jsp?id=<%=rs.getString(1)%>" onclick="return eliminar()">
                                             <i data-toggle="tooltip" data-placement="right" class="material-icons" style="font-size: 15px;color: #000" title="Eliminar">highlight_off</i></a>
@@ -325,7 +325,7 @@ try {
 %>
                                 <tr>
                                     <td style="text-align: center;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><i class="material-icons" style="font-size: 15px"  data-toggle="tooltip" data-placement="right" title="Asignar docente">description</i></a></td>
-                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="#nav-profile?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><%=rs.getString(2)%></a></td>
+                                    <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><a href="assign.jsp?codcur=<%=rs.getInt(1)%>&nombrecur=<%=rs.getString(2)%>" style="text-decoration: none;color:#000;"><%=rs.getString(2)%></a></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(3)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;"><%=rs.getString(4)%></td>
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center;">
@@ -399,7 +399,7 @@ try {
                                     <td style="padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;text-align: center">
                                         <a href="session.jsp?id=<%=rs.getString(1)%>&dnipro=<%=rs.getString(5)%>">
                                             <i data-toggle="tooltip" data-placement="left" class="material-icons" style="font-size: 15px; color: #000" title="Agregar sesión">timer</i></a>
-                                        <a href="editarrela.jsp?id=<%=rs.getString(1)%>">
+                                        <a href="edit_rela.jsp?id=<%=rs.getString(1)%>">
                                             <i data-toggle="tooltip" data-placement="top" class="material-icons" style="font-size: 15px; color: #000" title="Editar">edit</i></a>
                                         <a href="eliminarrela.jsp?id=<%=rs.getString(1)%>" onclick="return eliminar()">
                                             <i data-toggle="tooltip" data-placement="right" class="material-icons" style="font-size: 15px;color: #000" title="Eliminar">highlight_off</i></a>
