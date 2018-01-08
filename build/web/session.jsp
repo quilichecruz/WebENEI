@@ -119,7 +119,7 @@
                                         <tr>
                                             <th style="text-align: center;color: white" class="bg-secondary">FECHA</th>
                                             <th style="text-align: center;color: white" class="bg-secondary">HORA</th>
-                                            <th style="text-align: center;color: white" class="bg-secondary">OPCIÓN</th>
+                                            <!--<th style="text-align: center;color: white" class="bg-secondary">OPCIÓN</th>-->
                                         </tr>
                                     </thead>                                   
                                     <tbody>
@@ -134,10 +134,10 @@
                                     <tr>    
                                         <td style="text-align: center"><%=rs.getString(2)%></td>
                                         <td style="text-align: center"><%=rs.getString(3)%> - <%=rs.getString(4)%></td>
-                                        <td style="text-align: center">
+                                        <%--<td style="text-align: center">
                                             <a href="#"><i class="material-icons" style="font-size: 15px; color: #000">edit</i></a>
                                             <a href="#"><i class="material-icons" style="font-size: 15px; color: #000">highlight_off</i></a>
-                                        </td>
+                                        </td>--%>
                                     </tr>
                                     </tbody>
     <% 
